@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Glass_mat
+  m_Name: Bottle_liquid_mat
   m_Shader: {fileID: -6465566751694194690, guid: 73205737bc6c55344b5c30d8a40f9f42,
     type: 3}
   m_ShaderKeywords: 
@@ -22,8 +22,8 @@ Material:
     m_TexEnvs: []
     m_Floats:
     - Vector1_32264CA1: 0
-    - Vector1_C7F75E1D: 1.6
-    - Vector1_D5098E5D: -0.06
+    - Vector1_C7F75E1D: -1
+    - Vector1_D5098E5D: -0.02
     m_Colors:
     - Color_2410312E: {r: 1, g: 1, b: 1, a: 0}
     - Color_EE88DBB1: {r: 1, g: 0, b: 0, a: 0}
