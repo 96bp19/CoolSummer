@@ -7,27 +7,31 @@ public class FruitsMixer : MonoBehaviour
     public List<GameObject> usedFruits = new List<GameObject>();
 
     public GameObject ObjectToFill;
+    [SerializeField] private float maxFillval, minFillVal;
 
     public Color[] mixColors;
     
 
     public float mixRatio;
-    private string bottleFillValue = "Vector1_C7F75E1D", mainColor = "Color_EE88DBB1";
+    private string  mainColor = "_MainColor";
     public float mixSpeed;
 
-     float fillamount = -1f;
+    float fillamount = 0;
+    public ClipPlane planeObject;
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.M))
         {
+            fillamount = minFillVal;
+            planeObject.transform.SetPosition(y: minFillVal);
             StartMixingFruits();
         }
     }
     public void StartMixingFruits()
     {
-        fillamount = -1f;
-        Color mixedfruitColor = usedFruits[0].GetComponent<Renderer>().material.color;
+
+        Color mixedfruitColor = Color.red;
         Material mat = ObjectToFill.GetComponent<Renderer>().material;
         mat.SetColor(mainColor, mixedfruitColor);
         StartCoroutine(FillFlask(mat));
@@ -39,10 +43,12 @@ public class FruitsMixer : MonoBehaviour
 
     IEnumerator FillFlask(Material mat)
     {
-        while (fillamount<0.75f)
+        while (planeObject.transform.position.y <maxFillval)
         {
             fillamount += mixSpeed * Time.deltaTime;
-            mat.SetFloat(bottleFillValue, fillamount);
+            planeObject.transform.SetPosition(y :fillamount);
+
+
             yield return null;
         }
 
