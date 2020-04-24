@@ -20,20 +20,28 @@ public class LiquidPour : MonoBehaviour
 
     bool liquidReachedtheButtom;
 
+
+    private string bottleFillValue = "Vector1_C7F75E1D", mainColor = "Color_EE88DBB1", SecondaryColor = "Color_2410312E";
+
     private void Start()
     {
-        lineRenderer.SetPosition(0, pourStartTransform.position);
-        lineRenderer.SetPosition(1, pourStartTransform.position);
+        resetLineRendererPos();
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            resetLineRendererPos();
             Pour();
         }
     }
-
+    
+    void resetLineRendererPos()
+    {
+        lineRenderer.SetPosition(0, pourStartTransform.position);
+        lineRenderer.SetPosition(1, pourStartTransform.position);
+    }
 
     void Pour()
     {
@@ -44,8 +52,9 @@ public class LiquidPour : MonoBehaviour
 
     IEnumerator PourLiquid( Material filledflaskmat, Material emptyflaskmat ,float pourSpeed)
     {
-
-        float currentLiquidAmount = filledflaskmat.GetFloat("Vector1_C7F75E1D");
+        emptyflaskmat.SetColor(mainColor, filledflaskmat.GetColor(mainColor));
+        emptyflaskmat.SetColor(SecondaryColor, filledflaskmat.GetColor(SecondaryColor));
+        float currentLiquidAmount = filledflaskmat.GetFloat(bottleFillValue);
         
         IEnumerator endposRoutine = null;
         endposRoutine = SetEndPosForLine(liquidDropSpeed, pourStartTransform.position + Vector3.down * 3,1);
@@ -57,12 +66,12 @@ public class LiquidPour : MonoBehaviour
         }
         while(currentLiquidAmount >=-1)
         {
-            emptyflaskmat.SetFloat("Vector1_C7F75E1D", emptyflaskmat.GetFloat("Vector1_C7F75E1D")+pourSpeed*Time.deltaTime);
+            emptyflaskmat.SetFloat(bottleFillValue, emptyflaskmat.GetFloat(bottleFillValue)+pourSpeed*Time.deltaTime);
             currentLiquidAmount -= pourSpeed * Time.deltaTime;
-            filledflaskmat.SetFloat("Vector1_C7F75E1D", currentLiquidAmount);
+            filledflaskmat.SetFloat(bottleFillValue, currentLiquidAmount);
             yield return null;
         }
-        Debug.Log("pour complete");
+     
         StopCoroutine(endposRoutine);
         endposRoutine = SetEndPosForLine(liquidDropSpeed/2, pourStartTransform.position + Vector3.down * 3, 0);
         StartCoroutine(endposRoutine);
@@ -91,4 +100,6 @@ public class LiquidPour : MonoBehaviour
     {
         lineRenderer.SetPosition(index, newpos);
     }
+
+    
 }
