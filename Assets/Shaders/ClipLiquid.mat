@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Bottle_liquid_mat
-  m_Shader: {fileID: -6465566751694194690, guid: 73205737bc6c55344b5c30d8a40f9f42,
+  m_Name: ClipLiquid
+  m_Shader: {fileID: -6465566751694194690, guid: 0584e9c28d7f925459092bc828184097,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -20,10 +20,7 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs: []
-    m_Floats:
-    - Vector1_32264CA1: 0
-    - Vector1_C7F75E1D: 0.48
-    - Vector1_D5098E5D: 0.28
+    m_Floats: []
     m_Colors:
-    - Color_2410312E: {r: 1, g: 0.8938142, b: 0, a: 0}
-    - Color_EE88DBB1: {r: 0, g: 1, b: 0.27019215, a: 0}
+    - Color_2B48E03C: {r: 0.45041424, g: 0.8584906, b: 0.2713154, a: 0}
+    - _Plane: {r: 0.9525553, g: 0.30436555, b: 0, a: 0.2721028}

@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class FruitsChecker : MonoBehaviour
 {
-
+   
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Fruits"))
         {
             other.gameObject.tag = "Sliceable";
+           
         }
     }
+
 
 
     private void OnTriggerExit(Collider other)
@@ -19,7 +22,16 @@ public class FruitsChecker : MonoBehaviour
         if (other.CompareTag("Sliceable"))
         {
             other.gameObject.tag = "Fruits";
-            Debug.Log("Out of chopping Board");
+            
         }
     }
+
+   
+
+
+  
+
+
+
+
 }
