@@ -14,9 +14,7 @@ public class LiquidPour : MonoBehaviour
     [SerializeField] float liquidReturnSpeed = 1;
 
 
-    [SerializeField] GameObject FilledFlask, EmptyFlask;
-    // related to filling or emptying speed of bottle
-    [SerializeField] float liquidPourSpeed;
+    [SerializeField] FruitsMixer FilledFlask, EmptyFlask;
 
     bool liquidReachedtheButtom;
 
@@ -45,18 +43,16 @@ public class LiquidPour : MonoBehaviour
 
     void Pour()
     {
-        Material filledMat = FilledFlask.GetComponent<Renderer>().material;
-        Material emptymat = EmptyFlask.GetComponent<Renderer>().material;
-        StartCoroutine(PourLiquid(filledMat, emptymat, liquidPourSpeed));
+        EmptyFlask.mixColors = FilledFlask.mixColors;
+        StartCoroutine(PourLiquid(FilledFlask, EmptyFlask));
     }
 
-    IEnumerator PourLiquid( Material filledflaskmat, Material emptyflaskmat ,float pourSpeed)
+    IEnumerator PourLiquid( FruitsMixer filledflask, FruitsMixer emptyflask)
     {
-        emptyflaskmat.SetColor(mainColor, filledflaskmat.GetColor(mainColor));
-        emptyflaskmat.SetColor(SecondaryColor, filledflaskmat.GetColor(SecondaryColor));
-        float currentLiquidAmount = filledflaskmat.GetFloat(bottleFillValue);
-        
+
+
         IEnumerator endposRoutine = null;
+        liquidReachedtheButtom = false;
         endposRoutine = SetEndPosForLine(liquidDropSpeed, pourStartTransform.position + Vector3.down * 3,1);
         StartCoroutine(endposRoutine);
         while(!liquidReachedtheButtom)
@@ -64,16 +60,12 @@ public class LiquidPour : MonoBehaviour
             // just return until liquid hits buttom
             yield return null;
         }
-        while(currentLiquidAmount >=-1)
-        {
-            emptyflaskmat.SetFloat(bottleFillValue, emptyflaskmat.GetFloat(bottleFillValue)+pourSpeed*Time.deltaTime);
-            currentLiquidAmount -= pourSpeed * Time.deltaTime;
-            filledflaskmat.SetFloat(bottleFillValue, currentLiquidAmount);
-            yield return null;
-        }
+        filledflask.StartMixingFruits(false);
+        emptyflask.StartMixingFruits(true);
      
         StopCoroutine(endposRoutine);
         endposRoutine = SetEndPosForLine(liquidDropSpeed/2, pourStartTransform.position + Vector3.down * 3, 0);
+        Debug.Log("second routine");
         StartCoroutine(endposRoutine);
 
     }

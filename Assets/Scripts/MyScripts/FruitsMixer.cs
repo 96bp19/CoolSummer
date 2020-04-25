@@ -19,68 +19,70 @@ public class FruitsMixer : MonoBehaviour
     float fillamount = 0;
     public ClipPlane planeObject;
 
+  
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.M))
         {
             fillamount = minFillVal;
             planeObject.transform.SetPosition(y: minFillVal);
-            StartMixingFruits();
+            StartMixingFruits(true);
         }
     }
-    public void StartMixingFruits()
+    public void StartMixingFruits(bool fillFlask)
     {
 
         Color mixedfruitColor = Color.red;
         Material mat = ObjectToFill.GetComponent<Renderer>().material;
         mat.SetColor(mainColor, mixedfruitColor);
-        StartCoroutine(FillFlask(mat));
+        if (fillFlask)
+        {
+        StartCoroutine(FillFlask(mat,minFillVal,maxFillval,fillFlask));
+
+        }else
+        StartCoroutine(FillFlask(mat,minFillVal,maxFillval,fillFlask));
+
         // run particle system for mixing objects
 
 
 
     }
 
-    IEnumerator FillFlask(Material mat)
+    IEnumerator FillFlask(Material mat , float minfill, float maxfill ,bool fillflask)
     {
-        while (planeObject.transform.position.y <maxFillval)
+        
+        planeObject.transform.SetPosition(y: minfill);
+        fillamount = fillflask ? minfill : maxfill;
+        Vector3 localpos = planeObject.transform.localPosition;
+       
+
+        if (fillflask)
         {
-            fillamount += mixSpeed * Time.deltaTime;
-            planeObject.transform.SetPosition(y :fillamount);
+            while (fillamount < maxfill)
+            {
+                fillamount += mixSpeed * Time.deltaTime;
+                localpos.y = fillamount;
+                planeObject.transform.localPosition = localpos;
+
+                yield return null;
+            }
+        }
+        else
+        {
+            while (fillamount > minfill)
+            {
+                fillamount -= mixSpeed * Time.deltaTime;
+                localpos.y = fillamount;
+                planeObject.transform.localPosition = localpos;
 
 
-            yield return null;
+                yield return null;
+            }
         }
 
     }
 
-
-
-
-    
-
-    private void OnDrawGizmos()
-    {
-     
-//         Gizmos.color = ColorConverter.MixColor(mixColors);
-//         Gizmos.DrawCube(Vector3.zero,Vector3.one);
-//         
-//         Gizmos.color = (mixColors[0] + mixColors[1]) / 2;
-//         Gizmos.DrawCube(Vector3.right * 2, Vector3.one);
-// 
-//         Gizmos.color = ColorConverter.Mix_Color(mixRatio, mixColors[0], mixColors[1]);
-//         Gizmos.DrawCube(Vector3.right * 4, Vector3.one);
-// 
-//         mixColors[2] = ColorConverter.SubtractiveMixColor(mixColors[0], mixColors[1], mixRatio); 
-//         Gizmos.color = mixColors[2];
-//         Gizmos.DrawCube(Vector3.right * 6, Vector3.one);
-// 
-//         Gizmos.color = ColorConverter.SubtractiveMixColor(mixColors[0], mixColors[1], mixRatio,true);
-//         Gizmos.DrawCube(Vector3.right * 8, Vector3.one);
-
-
-
-    }
 
    
 }
