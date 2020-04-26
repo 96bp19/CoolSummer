@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ColorLayer
+  m_Shader: {fileID: -6465566751694194690, guid: 63ae184bd2a4d8e48a44122f2ff3a21c,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - Vector1_D4FC435C: 0.39
+    - Vector1_DCDDD88D: 0.58
+    m_Colors:
+    - Color_1B96A092: {r: 0.47419012, g: 0.9056604, b: 0.7927615, a: 0}
+    - Color_B566C624: {r: 1, g: 0.77952445, b: 0, a: 0}
+    - Color_C1BA7922: {r: 0, g: 0, b: 0, a: 0}
+    - Color_C229E9C2: {r: 0.6236205, g: 0.9245283, b: 0.894549, a: 0}
+    - Color_DE78BDC5: {r: 0.9622642, g: 0.6490744, b: 0.6490744, a: 0}

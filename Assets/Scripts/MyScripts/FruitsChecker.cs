@@ -5,12 +5,14 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class FruitsChecker : MonoBehaviour
 {
+    public SlicedObjectCounter counter;
    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Fruits"))
         {
             other.gameObject.tag = "Sliceable";
+            other.transform.SetParent(transform);
            
         }
     }
@@ -22,6 +24,7 @@ public class FruitsChecker : MonoBehaviour
         if (other.CompareTag("Sliceable"))
         {
             other.gameObject.tag = "Fruits";
+            other.transform.SetParent(null);
             
         }
     }

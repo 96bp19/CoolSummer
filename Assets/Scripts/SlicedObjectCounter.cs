@@ -4,30 +4,39 @@ using UnityEngine;
 
 public class SlicedObjectCounter : MonoBehaviour
 {
-
-    public GameObject mixer;
+    public Animator anim;
+  
     public int CountSlicedObjects()
    {
         return transform.childCount;
    }
 
+    public PhysicMaterial physicsMAt;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
             var objects = transform.GetComponentsInChildren<Rigidbody>();
+            GetComponent<MeshCollider>().material = physicsMAt;
             MoveToMixer(objects);
 
         }
     }
 
+    
+
+
     void MoveToMixer(Rigidbody[] objects)
     {
-        foreach (var item in objects)
-        {
-            item.gameObject.layer = LayerMask.NameToLayer("ChoppedFruits");
-            item.transform.parent = mixer.transform;
-            item.transform.position = new Vector3(0, 2, 0); 
-        }
+        anim.SetTrigger("MoveToMixer");
+
+
     }
+
+    //     IEnumerator moveObjects(Rigidbody[] objects)
+    //     {
+    //       
+    //     }
+
+
 }
