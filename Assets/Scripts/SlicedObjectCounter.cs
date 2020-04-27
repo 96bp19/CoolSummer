@@ -33,10 +33,8 @@ public class SlicedObjectCounter : MonoBehaviour
 
     }
 
-    //     IEnumerator moveObjects(Rigidbody[] objects)
-    //     {
-    //       
-    //     }
+    
+
 
 
 }
