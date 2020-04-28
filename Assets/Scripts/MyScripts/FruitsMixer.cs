@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class FruitsMixer : MonoBehaviour
 {
-    public List<GameObject> usedFruits = new List<GameObject>();
+
 
     public GameObject ObjectToFill;
     [SerializeField] private float maxFillval, minFillVal;
 
-    public Color[] mixColors;
+  
     
 
     public float mixRatio;
@@ -19,6 +19,14 @@ public class FruitsMixer : MonoBehaviour
     float fillamount = 0;
     public ClipPlane planeObject;
 
+    Color mixedColor;
+
+    public void SetMixedColor(Color col)
+    {
+        mixedColor = col;
+        Material mat = ObjectToFill.GetComponent<Renderer>().material;
+        mat.SetColor(mainColor, mixedColor);
+    }
 
     private void Awake()
     {
@@ -46,9 +54,9 @@ public class FruitsMixer : MonoBehaviour
     public void StartMixingFruits(bool fillFlask)
     {
 
-        Color mixedfruitColor = Color.red;
+        mixedColor= GameSequencer.Instance.mixedColor;
         Material mat = ObjectToFill.GetComponent<Renderer>().material;
-        mat.SetColor(mainColor, mixedfruitColor);
+        mat.SetColor(mainColor, mixedColor);
         if (fillFlask)
         {
         StartCoroutine(FillFlask(mat,minFillVal,maxFillval,fillFlask));

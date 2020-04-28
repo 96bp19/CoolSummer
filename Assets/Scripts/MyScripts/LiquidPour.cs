@@ -19,7 +19,7 @@ public class LiquidPour : MonoBehaviour
     bool liquidReachedtheButtom;
 
 
-    private string bottleFillValue = "Vector1_C7F75E1D", mainColor = "Color_EE88DBB1", SecondaryColor = "Color_2410312E";
+    private string  mainColor = "Color_EE88DBB1", SecondaryColor = "Color_2410312E";
 
     private void Awake()
     {
@@ -54,7 +54,8 @@ public class LiquidPour : MonoBehaviour
 
     void Pour()
     {
-        EmptyFlask.mixColors = FilledFlask.mixColors;
+     //   EmptyFlask.mixColors = FilledFlask.mixColors;
+        EmptyFlask.SetMixedColor(GameSequencer.Instance.mixedColor);
         StartCoroutine(PourLiquid(FilledFlask, EmptyFlask));
     }
 

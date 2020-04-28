@@ -10,6 +10,10 @@ public class GameSequencer: MonoBehaviour
     public delegate void OnGameStarted(int noOfFruitsToDrag);
     public static OnGameStarted GameInitializeListeners;
 
+    
+    public Color mixedColor;
+
+
     private void Awake()
     {
         Instance = this;

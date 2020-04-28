@@ -22,7 +22,7 @@ Material:
     m_TexEnvs: []
     m_Floats: []
     m_Colors:
-    - Color_2B48E03C: {r: 0.8207547, g: 0.43209377, b: 0.3987629, a: 0}
+    - Color_2B48E03C: {r: 1, g: 1, b: 1, a: 0}
     - Color_A7238AEE: {r: 0.8490566, g: 0.09211465, b: 0.09211465, a: 0}
     - _MainColor: {r: 0, g: 0, b: 0, a: 0}
-    - _Plane: {r: 0.9525553, g: 0.30436555, b: 0, a: 0.2721028}
+    - _Plane: {r: 0, g: 1, b: 0, a: 2}
