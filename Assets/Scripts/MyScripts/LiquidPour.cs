@@ -21,9 +21,20 @@ public class LiquidPour : MonoBehaviour
 
     private string bottleFillValue = "Vector1_C7F75E1D", mainColor = "Color_EE88DBB1", SecondaryColor = "Color_2410312E";
 
+    private void Awake()
+    {
+        GameSequencer.ItemPourStartListener += OnPourStart;
+    }
+
     private void Start()
     {
         resetLineRendererPos();
+    }
+
+    void OnPourStart()
+    {
+        resetLineRendererPos();
+        Pour();
     }
 
     private void Update()
@@ -85,6 +96,11 @@ public class LiquidPour : MonoBehaviour
         if (index ==1)
         {
             liquidReachedtheButtom = true;
+        }
+        else
+        {
+            // pour complete
+            GameSequencer.Instance.OnItemPoured();
         }
     }
 

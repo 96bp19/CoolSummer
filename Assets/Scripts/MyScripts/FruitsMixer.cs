@@ -19,7 +19,20 @@ public class FruitsMixer : MonoBehaviour
     float fillamount = 0;
     public ClipPlane planeObject;
 
-  
+
+    private void Awake()
+    {
+        GameSequencer.ItemMixStartListener += OnMixingStart;
+    }
+
+    void OnMixingStart()
+    {
+        fillamount = minFillVal;
+        planeObject.transform.SetPosition(y: minFillVal);
+        StartMixingFruits(true);
+    }
+   
+
 
     private void Update()
     {
@@ -80,6 +93,8 @@ public class FruitsMixer : MonoBehaviour
                 yield return null;
             }
         }
+
+      
 
     }
 

@@ -5,19 +5,28 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class FruitsChecker : MonoBehaviour
 {
-    public SlicedObjectCounter counter;
+   
     int currentFruitsCount =0;
+
+    bool allowedFruitMovingOutsideOfBoard = false;
 
     private void Awake()
     {
         GameSequencer.GameInitializeListeners += OnGameInitialized;
+        GameSequencer.ItemCutCompleteListener += OnObjectMoveAllowed;
         
+    }
+
+    void OnObjectMoveAllowed()
+    {
+        allowedFruitMovingOutsideOfBoard = true;
     }
 
   
 
     void OnGameInitialized( int NoOfFruitsToDrag)
     {
+        allowedFruitMovingOutsideOfBoard = false;
         currentFruitsCount = NoOfFruitsToDrag;
         Debug.Log("current fruit count initialized:" + currentFruitsCount);
     }
@@ -43,20 +52,14 @@ public class FruitsChecker : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Sliceable"))
+        if (other.CompareTag("Sliceable") && !allowedFruitMovingOutsideOfBoard)
         {
-           // StartCoroutine(destroyAfterSec(other.gameObject));
+          //  other.transform.position = transform.position + Vector3.up;
+
 
         }
     }
 
-    IEnumerator destroyAfterSec(GameObject obj)
-    {
-        yield return new WaitForSeconds(1f);
-        if (obj)
-        {
-            Destroy(obj);
-        }
-    }
+   
 
 }

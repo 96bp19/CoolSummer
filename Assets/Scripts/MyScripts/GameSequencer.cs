@@ -43,11 +43,26 @@ public class GameSequencer: MonoBehaviour
         ItemCutCompleteListener?.Invoke();
     }
 
+    public delegate void OnItemMoveStart();
+    public static OnItemMoveStart ItemMoveStartListener;
+    public void OnItemMoveStartToBlender()
+    {
+        ItemMoveStartListener?.Invoke();
+    }
+
     public delegate void OnItemMoveComplete();
     public static OnItemMoveComplete ItemMoveCompleteListener;
     public void OnItemMovedToBlender()
     {
         ItemMoveCompleteListener?.Invoke();
+    }
+
+    public delegate void OnItemMixStart();
+    public static OnItemMixStart ItemMixStartListener;
+    public void OnItemMixStarted()
+    {
+        ItemMixStartListener?.Invoke();
+        Invoke("OnItemMixFinish", 3f);
     }
 
     public delegate void OnItemMixComplete();
@@ -57,6 +72,14 @@ public class GameSequencer: MonoBehaviour
         ItemMixCompleteListener?.Invoke();
     }
 
+
+    public delegate void OnItemPourStart();
+    public static OnItemPourStart ItemPourStartListener;
+    public void OnItemPourStarted()
+    {
+        ItemPourStartListener?.Invoke();
+    }
+
     public delegate void OnItemPourComplete();
     public static OnItemPourComplete ItemPourCompleteListener;
     public void OnItemPoured()
@@ -64,5 +87,7 @@ public class GameSequencer: MonoBehaviour
         ItemPourCompleteListener?.Invoke();
     }
 
+
+   
     
 }

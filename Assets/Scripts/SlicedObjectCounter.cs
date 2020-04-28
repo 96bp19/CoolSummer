@@ -5,33 +5,46 @@ using UnityEngine;
 public class SlicedObjectCounter : MonoBehaviour
 {
     public Animator anim;
-  
+
+    private void Awake()
+    {
+        GameSequencer.ItemMoveStartListener += MoveObjectToMixer;
+    }
+
+    void MoveObjectToMixer()
+    {
+        var objects = transform.GetComponentsInChildren<Rigidbody>();
+        GetComponent<MeshCollider>().material = physicsMAt;
+        MoveToMixer(objects);
+        Invoke("OnMoveComplete", 2.5f);
+    }
+
+    
+
+
     public int CountSlicedObjects()
    {
         return transform.childCount;
    }
 
     public PhysicMaterial physicsMAt;
-    private void Update()
+  
+
+    void OnMoveComplete()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            var objects = transform.GetComponentsInChildren<Rigidbody>();
-            GetComponent<MeshCollider>().material = physicsMAt;
-            MoveToMixer(objects);
-
-        }
+        GameSequencer.Instance.OnItemMovedToBlender();
     }
-
-    
 
 
     void MoveToMixer(Rigidbody[] objects)
     {
+
         anim.SetTrigger("MoveToMixer");
 
 
     }
+
+  
 
     
 
