@@ -21,6 +21,12 @@ public class ScreenLineRenderer : MonoBehaviour {
     void Start () {
         cam = Camera.main;
         dragging = false;
+        GameSequencer.GameInitializeListeners += OnGameInitialized;
+    }
+
+    void OnGameInitialized(int val)
+    {
+        allowCutting = true;
     }
 
     private void OnEnable()
@@ -46,6 +52,7 @@ public class ScreenLineRenderer : MonoBehaviour {
 
     void CutOnClick()
     {
+        if (allowCutting == false) return;
         if (Input.GetMouseButtonDown(0))
         {
 
@@ -58,7 +65,7 @@ public class ScreenLineRenderer : MonoBehaviour {
             var endRay = cam.ViewportPointToRay(end);
 
             // Raise OnLineDrawnEvent
-            if (objectCounter.CountSlicedObjects() < 150)
+            if (objectCounter.CountSlicedObjects() < 50)
             {
                 OnLineDrawn?.Invoke(
                     startRay.GetPoint(cam.nearClipPlane),
@@ -67,12 +74,21 @@ public class ScreenLineRenderer : MonoBehaviour {
 
             }
             else
+            {
+                allowCutting = false;
                 Debug.Log("limit reached");
+                GameSequencer.Instance.OnItemCutFinish();
+            }
         }
     }
     public GameObject bladeStartpoint, bladeEndPoint;
+    bool allowCutting = true;
     void DragStyleCutting()
     {
+        if (allowCutting == false)
+        {
+            return;
+        }
         if (!dragging && Input.GetMouseButtonDown(0))
         {
             start = cam.ScreenToViewportPoint(Input.mousePosition);
@@ -96,16 +112,21 @@ public class ScreenLineRenderer : MonoBehaviour {
             var endRay = cam.ViewportPointToRay(end);
 
             // Raise OnLineDrawnEvent
-            if (objectCounter.CountSlicedObjects() < 150)
+            if (objectCounter.CountSlicedObjects() < 50)
             {
                 OnLineDrawn?.Invoke(
                     startRay.GetPoint(cam.nearClipPlane),
                     endRay.GetPoint(cam.nearClipPlane),
                     endRay.direction.normalized);
 
+
             }
             else
+            {
+                allowCutting = false;
                 Debug.Log("limit reached");
+                GameSequencer.Instance.OnItemCutFinish();
+            }
         }
     }
     
