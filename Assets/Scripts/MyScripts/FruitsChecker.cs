@@ -70,15 +70,7 @@ public class FruitsChecker : MonoBehaviour
 
 
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Sliceable") && !allowedFruitMovingOutsideOfBoard)
-        {
-          //  other.transform.position = transform.position + Vector3.up;
-
-
-        }
-    }
+  
 
    
 

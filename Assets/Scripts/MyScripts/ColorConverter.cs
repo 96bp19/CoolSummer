@@ -136,4 +136,32 @@ public class ColorConverter : MonoBehaviour
         return c1;
     }
 
+    public static Color mixRGB_color(Color col1 , Color col2)
+    {
+        Color mixedCol = Color.black;
+
+        col1 = col1 * col1;
+        col2 = col2 * col2;
+
+        mixedCol = col1 + col2;
+        mixedCol = mixedCol / 2;
+        mixedCol = new Color(Mathf.Sqrt(mixedCol.r), Mathf.Sqrt(mixedCol.g), Mathf.Sqrt(mixedCol.b), Mathf.Sqrt(mixedCol.a));
+
+        return mixedCol;
+    }
+
+    public static Color32 mixRGB_color32(Color col1, Color col2)
+    {
+        Color32 mixedCol = new Color32(0, 0, 0, 0);
+
+        col1 = col1 * col1;
+        col2 = col2 * col2;
+
+        mixedCol = col1 + col2;
+       // mixedCol = mixedCol / 2;
+        mixedCol = new Color(Mathf.Sqrt(mixedCol.r), Mathf.Sqrt(mixedCol.g), Mathf.Sqrt(mixedCol.b), Mathf.Sqrt(mixedCol.a));
+
+        return mixedCol;
+    }
+
 }

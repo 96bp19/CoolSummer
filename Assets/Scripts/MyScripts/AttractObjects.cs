@@ -4,34 +4,16 @@ using UnityEngine;
 
 public class AttractObjects : MonoBehaviour
 {
-    public float affectRadius = 3;
-    public float pullForce = 5;
+    public Color col1, col2;
+    public Color32 col_1, col_2;
 
-    List<Rigidbody> affectedRigidbodies = new List<Rigidbody>();
-    Vector3 moveDirection = Vector3.zero;
-
-    private void Update()
+    private void OnDrawGizmos()
     {
-        if (Input.GetMouseButtonDown(1))
-        {
-            var affectedbodies = Physics.OverlapSphere(transform.position, affectRadius);
-            affectedRigidbodies = new List<Rigidbody>();
-            foreach (var item in affectedbodies)
-            {
-                if (item.GetComponent<Rigidbody>())
-                {
-                    affectedRigidbodies.Add(item.GetComponent<Rigidbody>());
+        Gizmos.color = ColorConverter.mixRGB_color(col1 , col2);
+        Gizmos.DrawCube(transform.position, Vector3.one);
 
-                }
-            }
-
-        }
-
-            foreach (var item in affectedRigidbodies)
-            {
-                moveDirection = transform.position - item.position;
-                item.AddForce(moveDirection * pullForce, ForceMode.Force);
-            }
-
+        Gizmos.color = ColorConverter.mixRGB_color32(col_1, col_2);
+        Gizmos.DrawCube(transform.position + Vector3.right*2, Vector3.one);
+        
     }
 }
