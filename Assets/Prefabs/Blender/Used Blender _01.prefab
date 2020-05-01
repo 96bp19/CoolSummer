@@ -143,7 +143,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1817020293}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.421, z: -0.361}
+  m_LocalPosition: {x: 0, y: 0.36, z: -0.361}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2067382991}
@@ -342,7 +342,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 496288662510087685}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 496288663315474448}
@@ -458,12 +458,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 170432755c4755b40b9afbea1ff1e83e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usedFruits:
-  - {fileID: 0}
   ObjectToFill: {fileID: 4989798760705517471}
   maxFillval: 0
   minFillVal: -0.7
-  mixColors: []
   mixRatio: 0
   mixSpeed: 0.5
   planeObject: {fileID: 496288662510087683}
@@ -717,7 +714,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -158832219625225489, guid: f48bba7d7967c7b449d0ba364e50690b, type: 3}
+  - {fileID: 2100000, guid: 2f616049dca3d564d9df60f7000e261f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

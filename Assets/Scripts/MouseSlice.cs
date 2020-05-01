@@ -50,6 +50,25 @@ public class MouseSlice : MonoBehaviour {
         lineRenderer.OnLineDrawn -= OnLineDrawn;
     }
 
+    //back up
+
+//     private void OnLineDrawn(Vector3 start, Vector3 end, Vector3 depth)
+//     {
+//         var planeTangent = (end - start).normalized;
+// 
+//         // if we didn't drag, we set tangent to be on x
+//         if (planeTangent == Vector3.zero)
+//             planeTangent = Vector3.right;
+// 
+//         var normalVec = Vector3.Cross(depth, planeTangent);
+// 
+//         // if (drawPlane) DrawPlane(start, end, normalVec);
+// 
+//         tempstart = start;
+//         tempnormal = normalVec;
+//         SliceObjects(start, normalVec);
+//     }
+
     private void OnLineDrawn(Vector3 start, Vector3 end, Vector3 depth)
     {
         var planeTangent = (end - start).normalized;
