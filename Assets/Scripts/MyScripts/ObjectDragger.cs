@@ -68,6 +68,7 @@ public class ObjectDragger : MonoBehaviour
     void LimitKnifeMovement()
     {
         Vector3 newpos = Knife.transform.position;
+        newpos.y = 0f;
         newpos.x = Mathf.Clamp(newpos.x,knifeClampMin.x, knifeClampMax.x);
         newpos.z = Mathf.Clamp(newpos.z, knifeClampMin.y, knifeClampMax.y);
         Knife.transform.position = newpos;

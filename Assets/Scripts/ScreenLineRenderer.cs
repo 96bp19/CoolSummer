@@ -46,8 +46,48 @@ public class ScreenLineRenderer : MonoBehaviour {
 
 
         // new style
-        CutOnClick();
+        // CutOnClick();
+        CutOnClick_02();
 
+    }
+
+    void CutOnClick_02()
+    {
+        if (allowCutting == false) return;
+        if (Input.GetMouseButtonDown(0))
+        {
+
+            start = cam.WorldToViewportPoint(bladeStartpoint.transform.position);
+            end = cam.WorldToViewportPoint(bladeEndPoint.transform.position);
+
+
+
+            Debug.DrawLine(start, end, Color.black);
+
+            dragging = false;
+
+            var startRay = cam.ViewportPointToRay(start);
+            var endRay = cam.ViewportPointToRay(end);
+
+            Debug.DrawLine(startRay.origin, startRay.direction * 3);
+            Debug.DrawLine(endRay.origin, endRay.direction * 3);
+
+            // Raise OnLineDrawnEvent
+            if (objectCounter.CountSlicedObjects() < 50)
+            {
+                OnLineDrawn?.Invoke(
+                    startRay.GetPoint(cam.nearClipPlane),
+                    endRay.GetPoint(cam.nearClipPlane),
+                    endRay.direction.normalized);
+
+            }
+            else
+            {
+                allowCutting = false;
+                Debug.Log("limit reached");
+                GameSequencer.Instance.OnItemCutFinish();
+            }
+        }
     }
 
     void CutOnClick()
@@ -58,11 +98,18 @@ public class ScreenLineRenderer : MonoBehaviour {
 
             start = cam.WorldToViewportPoint(bladeStartpoint.transform.position);
             end = cam.WorldToViewportPoint(bladeEndPoint.transform.position);
+
+           
+
+            Debug.DrawLine(start, end, Color.black);
           
             dragging = false;
 
             var startRay = cam.ViewportPointToRay(start);
             var endRay = cam.ViewportPointToRay(end);
+
+            Debug.DrawLine(startRay.origin, startRay.direction * 3);
+            Debug.DrawLine(endRay.origin, endRay.direction * 3);
 
             // Raise OnLineDrawnEvent
             if (objectCounter.CountSlicedObjects() < 50)

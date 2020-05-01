@@ -16,7 +16,7 @@ public class SlicedObjectCounter : MonoBehaviour
     void MoveObjectToMixer()
     {
         slicedfruits = transform.GetComponentsInChildren<Rigidbody>();
-        GetComponent<MeshCollider>().material = physicsMAt;
+        GetComponent<Collider>().material = physicsMAt;
         MoveToMixer(slicedfruits);
         Invoke("OnMoveComplete", 2.5f);
     }
@@ -25,11 +25,13 @@ public class SlicedObjectCounter : MonoBehaviour
     void OnMixStarted()
     {
         StartCoroutine(startmixing());
+
+      
     }
 
      void dosakjsi(GameObject a)
     {
-        a.SetActive(false);
+        Destroy(a);
     }
 
     IEnumerator startmixing()
@@ -38,13 +40,19 @@ public class SlicedObjectCounter : MonoBehaviour
         int count = 0;
 
         var item = slicedfruits;
-        while (count < slicedfruits.Length)
-        {
-            dosakjsi(item[count].gameObject);
-            Debug.Log("destroyed");
-            count++;
-            yield return null;
+//         while (count < slicedfruits.Length-1)
+//         {
+//             Debug.Log("destroyed");
+//             count++;
+//             yield return null;
+//             dosakjsi(item[count].gameObject);
+// 
+//         }
 
+        foreach (var fruit in slicedfruits)
+        {
+            yield return null;
+            Destroy(fruit.gameObject);
         }
 
             Debug.Log("loop finish after count  : " +count);
@@ -71,7 +79,7 @@ public class SlicedObjectCounter : MonoBehaviour
 
         //  anim.SetTrigger("MoveToMixer");
 
-        // Time.timeScale = 0.1f;
+    
        
 
         foreach (var item in objects)
@@ -79,7 +87,7 @@ public class SlicedObjectCounter : MonoBehaviour
             item.gameObject.layer = LayerMask.NameToLayer("ChoppedFruits");
             item.transform.SetParent(null);
            
-            item.transform.position = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(3f, 6f), Random.Range(-0.5f, 0.5f));
+            item.transform.position = new Vector3(0, Random.Range(3f, 6f),0);
         }
 
 
