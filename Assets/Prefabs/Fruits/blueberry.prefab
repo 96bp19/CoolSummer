@@ -30,6 +30,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 7261950012332209861, guid: a2d5b29e0b83d2645ab70589cffced9b, type: 3}
+--- !u!114 &1819243630544611663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890467401733933560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b8b5739725bf7c48881914f4f5bfe71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fruitColor: {r: 0.09313814, g: 0.2709936, b: 0.8584906, a: 1}
 --- !u!1001 &9185793427233951985
 PrefabInstance:
   m_ObjectHideFlags: 0

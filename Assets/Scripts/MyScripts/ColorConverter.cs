@@ -164,4 +164,16 @@ public class ColorConverter : MonoBehaviour
         return mixedCol;
     }
 
+    public static Color getMixedColor( Color[] colorstomix)
+    {
+        Color color = colorstomix[0];
+
+        for (int i = 1; i < colorstomix.Length; i++)
+        {
+            color = ColorConverter.mixRGB_color(color, colorstomix[i]);
+        }
+
+        return color;
+    }
+
 }

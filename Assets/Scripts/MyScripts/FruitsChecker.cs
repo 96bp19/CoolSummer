@@ -24,17 +24,7 @@ public class FruitsChecker : MonoBehaviour
         allowedFruitMovingOutsideOfBoard = true;
     }
 
-    public  Color getMixedColor()
-    {
-        Color color = Color.black;
-        color.a = 0;
-        foreach (var item in addedColors)
-        {
-            color += item;
-        }
-        color /= addedColors.Count;
-        return color;
-    }
+   
   
 
     void OnGameInitialized( int NoOfFruitsToDrag)
@@ -54,14 +44,14 @@ public class FruitsChecker : MonoBehaviour
             other.transform.SetParent(transform);
             currentFruitsCount--;
             Debug.Log("current fruit count :" + currentFruitsCount);
-            Color fruitcolor = other.GetComponent<Renderer>().material.color;
+            Color fruitcolor = other.GetComponent<FruitColor>().fruitColor;
             if (!addedColors.Contains(fruitcolor))
             {
                 addedColors.Add(fruitcolor);
             }
             if (currentFruitsCount == 0)
             {
-                GameSequencer.Instance.mixedColor = getMixedColor();
+                GameSequencer.Instance.mixedColor = ColorConverter.getMixedColor(addedColors.ToArray());
                 GameSequencer.Instance.OnItemDragFinish();
             }
 
