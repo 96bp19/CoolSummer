@@ -46,8 +46,8 @@ public class ScreenLineRenderer : MonoBehaviour {
 
 
         // new style
-        // CutOnClick();
-        CutOnClick_02();
+         CutOnClick();
+        //CutOnClick_02();
 
     }
 
@@ -57,8 +57,8 @@ public class ScreenLineRenderer : MonoBehaviour {
         if (Input.GetMouseButtonDown(0))
         {
 
-            start = cam.WorldToViewportPoint(bladeStartpoint.transform.position);
-            end = cam.WorldToViewportPoint(bladeEndPoint.transform.position);
+            start = bladeStartpoint.transform.position;
+            end = bladeEndPoint.transform.position;
 
 
 
@@ -75,10 +75,7 @@ public class ScreenLineRenderer : MonoBehaviour {
             // Raise OnLineDrawnEvent
             if (objectCounter.CountSlicedObjects() < 50)
             {
-                OnLineDrawn?.Invoke(
-                    startRay.GetPoint(cam.nearClipPlane),
-                    endRay.GetPoint(cam.nearClipPlane),
-                    endRay.direction.normalized);
+                OnLineDrawn?.Invoke(start,end,Vector3.right);
 
             }
             else

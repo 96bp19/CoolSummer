@@ -15,5 +15,8 @@ public class KnifeRotater : MonoBehaviour
         knifeRot.y = newRot.y;
         knifeRot.x = knifeRot.z = 0f;
         knifeRoot.transform.eulerAngles = knifeRot;
+
+    
+
     }
 }

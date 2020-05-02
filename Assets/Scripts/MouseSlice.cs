@@ -52,23 +52,6 @@ public class MouseSlice : MonoBehaviour {
 
     //back up
 
-//     private void OnLineDrawn(Vector3 start, Vector3 end, Vector3 depth)
-//     {
-//         var planeTangent = (end - start).normalized;
-// 
-//         // if we didn't drag, we set tangent to be on x
-//         if (planeTangent == Vector3.zero)
-//             planeTangent = Vector3.right;
-// 
-//         var normalVec = Vector3.Cross(depth, planeTangent);
-// 
-//         // if (drawPlane) DrawPlane(start, end, normalVec);
-// 
-//         tempstart = start;
-//         tempnormal = normalVec;
-//         SliceObjects(start, normalVec);
-//     }
-
     private void OnLineDrawn(Vector3 start, Vector3 end, Vector3 depth)
     {
         var planeTangent = (end - start).normalized;
@@ -85,6 +68,29 @@ public class MouseSlice : MonoBehaviour {
         tempnormal = normalVec;
         SliceObjects(start, normalVec);
     }
+
+    //     private void OnLineDrawn(Vector3 start, Vector3 end, Vector3 depth)
+    //     {
+    //         //         var planeTangent = (end - start).normalized;
+    //         // 
+    //         //         // if we didn't drag, we set tangent to be on x
+    //         //         if (planeTangent == Vector3.zero)
+    //         //             planeTangent = Vector3.right;
+    //         // 
+    //         //         var normalVec = Vector3.Cross(depth, planeTangent);
+    //         // 
+    //         //         // if (drawPlane) DrawPlane(start, end, normalVec);
+    //         // 
+    //         //         tempstart = start;
+    //         //         tempnormal = normalVec;
+    // 
+    //         Debug.Log("2 is called");
+    // 
+    //         Vector3 direction = (start-end).normalized;
+    //         Vector3 normal = Vector3.Cross(Vector3.right,direction);
+    //         
+    //         SliceObjects(end,normal);
+    //     }
 
     Vector3 tempstart, tempnormal;
     private void Update()
@@ -109,7 +115,8 @@ public class MouseSlice : MonoBehaviour {
             obj = toSlice[i];
             // We multiply by the inverse transpose of the worldToLocal Matrix, a.k.a the transpose of the localToWorld Matrix
             // Since this is how normal are transformed
-            var transformedNormal = ((Vector3)(obj.transform.localToWorldMatrix.transpose * normal)).normalized;
+              var transformedNormal = ((Vector3)(obj.transform.localToWorldMatrix.transpose * normal)).normalized;
+           
 
             //Convert plane in object's local frame
             slicePlane.SetNormalAndPosition(

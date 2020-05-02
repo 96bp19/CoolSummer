@@ -87,7 +87,7 @@ public class SlicedObjectCounter : MonoBehaviour
             item.gameObject.layer = LayerMask.NameToLayer("ChoppedFruits");
             item.transform.SetParent(null);
            
-            item.transform.position = new Vector3(0, Random.Range(3f, 6f),0);
+            item.transform.position = new Vector3(0, Random.Range(3f, 6f),0.6f);
         }
 
 
