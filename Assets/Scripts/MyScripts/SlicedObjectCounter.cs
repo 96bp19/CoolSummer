@@ -16,7 +16,6 @@ public class SlicedObjectCounter : MonoBehaviour
     void MoveObjectToMixer()
     {
         slicedfruits = transform.GetComponentsInChildren<Rigidbody>();
-        GetComponent<Collider>().material = physicsMAt;
         MoveToMixer(slicedfruits);
         Invoke("OnMoveComplete", 2.5f);
     }
@@ -25,48 +24,26 @@ public class SlicedObjectCounter : MonoBehaviour
     void OnMixStarted()
     {
         StartCoroutine(startmixing());
-
       
     }
 
-     void dosakjsi(GameObject a)
-    {
-        Destroy(a);
-    }
 
     IEnumerator startmixing()
     {
-            Debug.Log("item count : " + slicedfruits.Length);
-        int count = 0;
-
-        var item = slicedfruits;
-//         while (count < slicedfruits.Length-1)
-//         {
-//             Debug.Log("destroyed");
-//             count++;
-//             yield return null;
-//             dosakjsi(item[count].gameObject);
-// 
-//         }
-
         foreach (var fruit in slicedfruits)
         {
             yield return null;
             Destroy(fruit.gameObject);
         }
 
-            Debug.Log("loop finish after count  : " +count);
-    
     }
 
 
     public int CountSlicedObjects()
-   {
+    {
         return transform.childCount;
-   }
+    }
 
-    public PhysicMaterial physicsMAt;
-  
 
     void OnMoveComplete()
     {

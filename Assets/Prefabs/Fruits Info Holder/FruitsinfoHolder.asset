@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: FruitsinfoHolder
+  m_EditorClassIdentifier: Assembly-CSharp::FruitsInfoHolder
+  allfruits:
+  - {fileID: -3960445003250443131, guid: 7b33fd7f23968894e8be394b591dded6, type: 3}
+  - {fileID: -8857029041811862573, guid: dfd9f98a5254d6847bf8e37ab7ebab98, type: 3}
+  - {fileID: -8770266358260900219, guid: bd47ac663c9f1224c971708d85a4f1ca, type: 3}
+  - {fileID: -4094172196900479510, guid: 4d3b6e9ded9a5ab47b4cf5d5f20c9ee3, type: 3}
+  - {fileID: 3647364850720399796, guid: e783d4562ad70fa42abbb1b05ba39e4d, type: 3}
+  - {fileID: 8725298449275722106, guid: 0a3ff978a3e4a4b48bf013e0bb431974, type: 3}

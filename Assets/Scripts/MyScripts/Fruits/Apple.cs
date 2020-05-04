@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FruitColor : MonoBehaviour
+public class Apple : Fruit
 {
-    public Color fruitColor;
+   
 }
+

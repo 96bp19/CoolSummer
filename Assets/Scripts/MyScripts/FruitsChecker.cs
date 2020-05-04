@@ -44,7 +44,7 @@ public class FruitsChecker : MonoBehaviour
             other.transform.SetParent(transform);
             currentFruitsCount--;
             Debug.Log("current fruit count :" + currentFruitsCount);
-            Color fruitcolor = other.GetComponent<FruitColor>().fruitColor;
+            Color fruitcolor = other.GetComponent<Fruit>().fruitColor;
             if (!addedColors.Contains(fruitcolor))
             {
                 addedColors.Add(fruitcolor);
