@@ -28,6 +28,10 @@ public class GameSequencer: MonoBehaviour
 
     List<Fruit> blenderfruit;
 
+
+
+    public GameObject FruitBasket;
+
     private void Awake()
     {
         Instance = this;
@@ -42,10 +46,26 @@ public class GameSequencer: MonoBehaviour
     void ListFruitsToBlend(int val)
     {
         int maxfruitlength = fruitinfoHolder.allfruits.Length;
+        int index = 0;
+        List<int> fruitToCut = new List<int>();
         for (int i = 0; i < val; i++)
         {
-            Debug.Log("fruit to blend order : " + fruitinfoHolder.allfruits[Random.Range(0, maxfruitlength - 1)]);
+            index = Random.Range(0, maxfruitlength - 1);
+            Debug.Log("fruit to blend order : " + fruitinfoHolder.allfruits[index]);
+            Transform obj = Instantiate(fruitinfoHolder.allfruits[index]).transform;
+            obj.SetParent(FruitBasket.transform);
+            obj.localPosition = new Vector3((-1.5f) + 0.5f * i, 0, 0);
+            fruitToCut.Add(index);
         }
+        for (int i = val; i < 3; i++)
+        {
+            index = Random.Range(0, fruitToCut.Count);
+            Debug.Log("fruit to blend order : " + fruitinfoHolder.allfruits[fruitToCut[index]]);
+            Transform obj = Instantiate(fruitinfoHolder.allfruits[fruitToCut[index]]).transform;
+            obj.SetParent(FruitBasket.transform);
+            obj.localPosition = new Vector3((-1.5f+val*0.5f) + 0.5f * i, 0, 0);
+        }
+        fruitToCut.Clear();
         blenderfruit = new List<Fruit>();
         
     }
@@ -56,7 +76,7 @@ public class GameSequencer: MonoBehaviour
         {
             currentFruitBlendedCount = 0;
             fruitmixlayer = Random.Range(1, 4);
-            gameJustStarted = true;
+            gameJustStarted = false;
             ListFruitsToBlend(fruitmixlayer);
 
            
