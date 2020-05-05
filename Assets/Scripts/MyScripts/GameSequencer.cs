@@ -34,6 +34,8 @@ public class GameSequencer: MonoBehaviour
 
     public GameObject FruitBasket;
 
+    public List<Transform> allfruitsInBasket;
+
     private void Awake()
     {
         Instance = this;
@@ -52,6 +54,8 @@ public class GameSequencer: MonoBehaviour
         int maxfruitlength = fruitinfoHolder.allfruits.Length;
         int index = 0;
         List<int> fruitToCut = new List<int>();
+
+        
         
         for (int i = 0; i < val; i++)
         {
@@ -63,6 +67,7 @@ public class GameSequencer: MonoBehaviour
             obj.GetComponent<Fruit>().fruitIndex = index;
             fruitToCut.Add(index);
             blenderfruit.Add(index);
+            allfruitsInBasket.Add(obj);
        
         }
         for (int i = val; i < 3; i++)
@@ -74,8 +79,35 @@ public class GameSequencer: MonoBehaviour
             obj.SetParent(FruitBasket.transform);
             obj.localPosition = new Vector3((-1.5f+val*0.5f) + 0.5f * i, 0, 0);
             blenderfruit.Add(fruitToCut[index]);
+            allfruitsInBasket.Add(obj);
+        }
+
+        for (int i = 0; i < 5; i++)
+        {
+            Transform obj = Instantiate(fruitinfoHolder.allfruits[Random.Range(0,fruitinfoHolder.allfruits.Length)]).transform;
+            obj.SetParent(FruitBasket.transform);
+            obj.localPosition = new Vector3((-1.5f) + 0.3f * i, 0.5f, 0);
+            allfruitsInBasket.Add(obj);
         }
         fruitToCut.Clear();
+        
+        
+    }
+
+    void DestroyPreviousFruits()
+    {
+        if (allfruitsInBasket == null)
+        {
+            allfruitsInBasket = new List<Transform>();
+        }
+        for (int i = 0; i < allfruitsInBasket.Count; i++)
+        {
+            if (allfruitsInBasket[i] != null)
+            {
+                Destroy(allfruitsInBasket[i].gameObject);
+            }
+        }
+        allfruitsInBasket.Clear();
         
     }
 
@@ -87,6 +119,7 @@ public class GameSequencer: MonoBehaviour
             fruitmixlayer = Random.Range(1, 4);
             
             gameJustStarted = false;
+            DestroyPreviousFruits();
             ListFruitsToBlend(fruitmixlayer);
 
            
