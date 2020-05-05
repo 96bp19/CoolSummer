@@ -7,6 +7,9 @@ public class UIController : MonoBehaviour
     public GameObject  itemDragText, itemCutText, itemMixText, itempourText;
     public GameObject MoveToMixerButtton, MixButton, PourButton;
 
+    public Text fruitMixOrder;
+
+
     private void Awake()
     {
         GameSequencer.GameInitializeListeners += OnGameStarted;
@@ -21,6 +24,14 @@ public class UIController : MonoBehaviour
     {
         DisableAllUIObj();
         itemDragText.SetActive(true);
+        string fruitTomake = "";
+        var fruitcutorder = GameSequencer.Instance.blenderfruit;
+        for (int i = 0; i < fruitcutorder.Count; i++)
+        {
+           
+            fruitTomake += "  " + GameSequencer.Instance.fruitinfoHolder.allfruits[fruitcutorder[i]].name;
+        }
+        fruitMixOrder.text = fruitTomake;
     }
 
     void OnItemDragged()

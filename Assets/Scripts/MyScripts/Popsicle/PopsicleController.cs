@@ -16,11 +16,19 @@ public class PopsicleController : MonoBehaviour
 
     void OnPopsicleMade()
     {
-        
-        mat.SetColor(buttomcolor, GameSequencer.Instance.fruitinfoHolder.allfruits[GameSequencer.Instance.playerCutFruits[0]].fruitLiquidcolor);
-        mat.SetColor(middlecolor, GameSequencer.Instance.fruitinfoHolder.allfruits[GameSequencer.Instance.playerCutFruits[1]].fruitLiquidcolor);
-        mat.SetColor(topcolor, GameSequencer.Instance.fruitinfoHolder.allfruits[GameSequencer.Instance.playerCutFruits[2]].fruitLiquidcolor);
+
+        MakePopsicleLayer(GameSequencer.Instance.fruitinfoHolder, GameSequencer.Instance.playerCutFruits.ToArray());
     }
+
+    public void MakePopsicleLayer(FruitsInfoHolder fruitinfo , int[] fruitaccessIndex )
+    {
+        mat.SetColor(buttomcolor, fruitinfo.allfruits[fruitaccessIndex[0]].fruitLiquidcolor);
+        mat.SetColor(middlecolor, fruitinfo.allfruits[fruitaccessIndex[1]].fruitLiquidcolor);
+        mat.SetColor(topcolor, fruitinfo.allfruits[fruitaccessIndex[2]].fruitLiquidcolor);
+       
+    }
+
+
 
 
 }

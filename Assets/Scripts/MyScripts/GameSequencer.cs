@@ -23,13 +23,13 @@ public class GameSequencer: MonoBehaviour
 
 
     
-    public Color mixedColor;
+    [HideInInspector] public Color mixedColor;
 
 
     //  fruits that needs to be cut in order to complete the given level
-    List<int> blenderfruit;
+   [HideInInspector] public List<int> blenderfruit;
     // this is the fruits that player cut 
-    public List<int> playerCutFruits;
+    [HideInInspector] public List<int> playerCutFruits;
 
 
     public GameObject FruitBasket;
