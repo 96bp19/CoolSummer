@@ -4,19 +4,19 @@
             "typeInfo": {
                 "fullName": "UnityEditor.ShaderGraph.ColorShaderProperty"
             },
-            "JSONnodeData": "{\n    \"m_Name\": \"TopCOl\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"48a75edc-4135-4467-8d24-8a43a54e3daa\"\n    },\n    \"m_DefaultReferenceName\": \"Color_B566C624\",\n    \"m_OverrideReferenceName\": \"\",\n    \"m_Precision\": 0,\n    \"m_Value\": {\n        \"r\": 1.0,\n        \"g\": 0.3349056839942932,\n        \"b\": 0.3349056839942932,\n        \"a\": 0.0\n    },\n    \"m_ColorMode\": 0,\n    \"m_Hidden\": false\n}"
+            "JSONnodeData": "{\n    \"m_Name\": \"TopCOl\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"48a75edc-4135-4467-8d24-8a43a54e3daa\"\n    },\n    \"m_DefaultReferenceName\": \"Color_B566C624\",\n    \"m_OverrideReferenceName\": \"_TopColor\",\n    \"m_Precision\": 0,\n    \"m_Value\": {\n        \"r\": 1.0,\n        \"g\": 0.3349056839942932,\n        \"b\": 0.3349056839942932,\n        \"a\": 0.0\n    },\n    \"m_ColorMode\": 0,\n    \"m_Hidden\": false\n}"
         },
         {
             "typeInfo": {
                 "fullName": "UnityEditor.ShaderGraph.ColorShaderProperty"
             },
-            "JSONnodeData": "{\n    \"m_Name\": \"MiddleCol\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"2a786359-6c4e-4435-b579-a2afa08c557e\"\n    },\n    \"m_DefaultReferenceName\": \"Color_DE78BDC5\",\n    \"m_OverrideReferenceName\": \"\",\n    \"m_Precision\": 0,\n    \"m_Value\": {\n        \"r\": 0.9622641801834106,\n        \"g\": 0.6490744352340698,\n        \"b\": 0.6490744352340698,\n        \"a\": 0.0\n    },\n    \"m_ColorMode\": 0,\n    \"m_Hidden\": false\n}"
+            "JSONnodeData": "{\n    \"m_Name\": \"MiddleCol\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"2a786359-6c4e-4435-b579-a2afa08c557e\"\n    },\n    \"m_DefaultReferenceName\": \"Color_DE78BDC5\",\n    \"m_OverrideReferenceName\": \"_MiddleColor\",\n    \"m_Precision\": 0,\n    \"m_Value\": {\n        \"r\": 0.9622641801834106,\n        \"g\": 0.6490744352340698,\n        \"b\": 0.6490744352340698,\n        \"a\": 0.0\n    },\n    \"m_ColorMode\": 0,\n    \"m_Hidden\": false\n}"
         },
         {
             "typeInfo": {
                 "fullName": "UnityEditor.ShaderGraph.ColorShaderProperty"
             },
-            "JSONnodeData": "{\n    \"m_Name\": \"ButtomCOl\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"36ded1a8-7c45-49d0-a920-a54222c05a26\"\n    },\n    \"m_DefaultReferenceName\": \"Color_C229E9C2\",\n    \"m_OverrideReferenceName\": \"\",\n    \"m_Precision\": 0,\n    \"m_Value\": {\n        \"r\": 0.6236205101013184,\n        \"g\": 0.9245283007621765,\n        \"b\": 0.8945490121841431,\n        \"a\": 0.0\n    },\n    \"m_ColorMode\": 0,\n    \"m_Hidden\": false\n}"
+            "JSONnodeData": "{\n    \"m_Name\": \"ButtomCOl\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"36ded1a8-7c45-49d0-a920-a54222c05a26\"\n    },\n    \"m_DefaultReferenceName\": \"Color_C229E9C2\",\n    \"m_OverrideReferenceName\": \"_ButtomColor\",\n    \"m_Precision\": 0,\n    \"m_Value\": {\n        \"r\": 0.6236205101013184,\n        \"g\": 0.9245283007621765,\n        \"b\": 0.8945490121841431,\n        \"a\": 0.0\n    },\n    \"m_ColorMode\": 0,\n    \"m_Hidden\": false\n}"
         },
         {
             "typeInfo": {

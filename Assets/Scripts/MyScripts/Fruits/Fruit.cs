@@ -7,6 +7,8 @@ public abstract class Fruit : MonoBehaviour
     public Color fruitColor;
     public Color fruitLiquidcolor;
     public bool fruitUnlocked;
+    [HideInInspector]
+    public int fruitIndex;
     private void Awake()
     {
         fruitColor.a = 1;

@@ -45,6 +45,7 @@ public class FruitsChecker : MonoBehaviour
             currentFruitsCount--;
             Debug.Log("current fruit count :" + currentFruitsCount);
             Color fruitcolor = other.GetComponent<Fruit>().fruitColor;
+            GameSequencer.Instance.playerCutFruits.Add(other.GetComponent<Fruit>().fruitIndex);
             if (!addedColors.Contains(fruitcolor))
             {
                 addedColors.Add(fruitcolor);
