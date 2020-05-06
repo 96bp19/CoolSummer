@@ -70,7 +70,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: b9156657ca9014045b42657fe0462397,
         type: 3}
       propertyPath: m_Name
-      value: pineapple (5)
+      value: pineapple
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: b9156657ca9014045b42657fe0462397,
         type: 3}
@@ -80,7 +80,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: b9156657ca9014045b42657fe0462397,
         type: 3}
       propertyPath: m_TagString
-      value: Fruits
+      value: Dragable
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: b9156657ca9014045b42657fe0462397,
         type: 3}

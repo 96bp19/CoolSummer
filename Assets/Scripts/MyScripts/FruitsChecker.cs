@@ -16,6 +16,7 @@ public class FruitsChecker : MonoBehaviour
     {
         GameSequencer.GameInitializeListeners += OnGameInitialized;
         GameSequencer.ItemCutCompleteListener += OnObjectMoveAllowed;
+        ObjectDragger.fruitDragListener += OnFruitInsideChoppingBoard;
         
     }
 
@@ -34,30 +35,34 @@ public class FruitsChecker : MonoBehaviour
         currentFruitsCount = NoOfFruitsToDrag;
         Debug.Log("current fruit count initialized:" + currentFruitsCount);
     }
+    
 
-    private void OnTriggerEnter(Collider other)
+    
+    public void OnFruitInsideChoppingBoard( Fruit fruit)
     {
         if (currentFruitsCount == 0) return;
-        if (other.gameObject.CompareTag("Fruits"))
+        if (fruit.gameObject.CompareTag("Fruits"))
         {
-            other.gameObject.tag = "Sliceable";
-            other.transform.SetParent(transform);
+            fruit.gameObject.tag = "Sliceable";
+            fruit.transform.SetParent(transform);
             currentFruitsCount--;
             Debug.Log("current fruit count :" + currentFruitsCount);
-            Color fruitcolor = other.GetComponent<Fruit>().fruitColor;
-            GameSequencer.Instance.playerCutFruits.Add(other.GetComponent<Fruit>().fruitIndex);
+            Color fruitcolor = fruit.fruitColor;
             if (!addedColors.Contains(fruitcolor))
             {
                 addedColors.Add(fruitcolor);
             }
             if (currentFruitsCount == 0)
             {
+                GameSequencer.Instance.playerCutFruits.Add(fruit.fruitIndex);
                 GameSequencer.Instance.mixedColor = ColorConverter.getMixedColor(addedColors.ToArray());
                 GameSequencer.Instance.OnItemDragFinish();
             }
 
         }
     }
+
+ 
 
 
 

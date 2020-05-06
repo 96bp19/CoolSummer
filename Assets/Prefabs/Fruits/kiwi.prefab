@@ -80,7 +80,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 529a2cdb9115d5b4ebedc3a18b9e5ee2,
         type: 3}
       propertyPath: m_TagString
-      value: Fruits
+      value: Dragable
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 529a2cdb9115d5b4ebedc3a18b9e5ee2,
         type: 3}
