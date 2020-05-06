@@ -12,7 +12,7 @@ public class GameSequencer: MonoBehaviour
 
 
     // holds info about various fruits used in game
-    public FruitsInfoHolder fruitinfoHolder;
+    public FruitSlotManager fruitinfoHolder;
 
     // no of types of fruits to be blended
     int fruitmixlayer;
@@ -27,14 +27,14 @@ public class GameSequencer: MonoBehaviour
 
 
     //  fruits that needs to be cut in order to complete the given level
-   [HideInInspector] public List<int> blenderfruit;
+    [HideInInspector] public List<int> blenderfruit;
     // this is the fruits that player cut 
     [HideInInspector] public List<int> playerCutFruits;
 
+    List<int> noOfFruitsToDrag;
+
 
     public GameObject FruitBasket;
-
-    public List<Transform> allfruitsInBasket;
 
     private void Awake()
     {
@@ -51,63 +51,24 @@ public class GameSequencer: MonoBehaviour
     {
         blenderfruit = new List<int>();
         playerCutFruits = new List<int>();
-        int maxfruitlength = fruitinfoHolder.allfruits.Length;
+        noOfFruitsToDrag = new List<int>();
+        int maxfruitlength = fruitinfoHolder.fruitslots.Length;
         int index = 0;
-        List<int> fruitToCut = new List<int>();
-
-        
-        
-        for (int i = 0; i < val; i++)
+  
+        for (int i = 0; i < 3; i++)
         {
             index = Random.Range(0, maxfruitlength);
-            Debug.Log("fruit to blend order : " + fruitinfoHolder.allfruits[index]);
-            Transform obj = Instantiate(fruitinfoHolder.allfruits[index]).transform;
-            obj.SetParent(FruitBasket.transform);
-            obj.localPosition = new Vector3((-1.5f) + 0.5f * i, 0, 0);
-            obj.GetComponent<Fruit>().fruitIndex = index;
-            fruitToCut.Add(index);
+            Debug.Log("fruit to blend order : " + fruitinfoHolder.fruitslots[index].fruitSlotInfo.fruitPrefab);
+            noOfFruitsToDrag.Add(fruitinfoHolder.GetNoOfFruitsToDrag(index));
+            fruitinfoHolder.GenerateFruit(index);
             blenderfruit.Add(index);
-            allfruitsInBasket.Add(obj);
        
         }
-        for (int i = val; i < 3; i++)
-        {
-            index = Random.Range(0, fruitToCut.Count);
-            Debug.Log("fruit to blend order : " + fruitinfoHolder.allfruits[fruitToCut[index]]);
-            Transform obj = Instantiate(fruitinfoHolder.allfruits[fruitToCut[index]]).transform;
-            obj.GetComponent<Fruit>().fruitIndex = fruitToCut[index];
-            obj.SetParent(FruitBasket.transform);
-            obj.localPosition = new Vector3((-1.5f+val*0.5f) + 0.5f * i, 0, 0);
-            blenderfruit.Add(fruitToCut[index]);
-            allfruitsInBasket.Add(obj);
-        }
-
-        for (int i = 0; i < 5; i++)
-        {
-            Transform obj = Instantiate(fruitinfoHolder.allfruits[Random.Range(0,fruitinfoHolder.allfruits.Length)]).transform;
-            obj.SetParent(FruitBasket.transform);
-            obj.localPosition = new Vector3((-1.5f) + 0.3f * i, 0.5f, 0);
-            allfruitsInBasket.Add(obj);
-        }
-        fruitToCut.Clear();
-        
-        
     }
 
     void DestroyPreviousFruits()
     {
-        if (allfruitsInBasket == null)
-        {
-            allfruitsInBasket = new List<Transform>();
-        }
-        for (int i = 0; i < allfruitsInBasket.Count; i++)
-        {
-            if (allfruitsInBasket[i] != null)
-            {
-                Destroy(allfruitsInBasket[i].gameObject);
-            }
-        }
-        allfruitsInBasket.Clear();
+        fruitinfoHolder.DestroyPreviousFruits();
         
     }
 
@@ -124,9 +85,8 @@ public class GameSequencer: MonoBehaviour
 
            
         }
-        //         noOFFruitsToDrag = 3 - fruitmixlayer;
-        //         noOFFruitsToDrag = Mathf.Clamp(noOFFruitsToDrag, 1, 3);
-        noOFFruitsToDrag = 1;
+     
+        noOFFruitsToDrag = noOfFruitsToDrag[currentFruitBlendedCount];
         
         GameInitializeListeners?.Invoke(noOFFruitsToDrag);
         // start of the game 
@@ -220,7 +180,7 @@ public class GameSequencer: MonoBehaviour
         currentFruitBlendedCount++;
 
 
-        if (playerCutFruits.Count == blenderfruit.Count)
+        if (currentFruitBlendedCount == 3)
         {
             gameJustStarted = true;
             OnLevelComplete();
@@ -240,6 +200,7 @@ public class GameSequencer: MonoBehaviour
         levelCompleteListener?.Invoke();
         
         Invoke("RestartGameLoop", 2f);
+        currentFruitBlendedCount = 0;
 
     }
 

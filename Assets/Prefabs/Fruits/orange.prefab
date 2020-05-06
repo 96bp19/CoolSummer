@@ -44,6 +44,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fruitColor: {r: 1, g: 0.45249465, b: 0, a: 0}
   fruitLiquidcolor: {r: 0.9245283, g: 0.71614796, b: 0.53640085, a: 0}
+  fruitUnlocked: 0
+  fruitIndex: 0
+--- !u!114 &1003372462478228067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5690583658771914265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33bbd67330746b749baa35dca7b49c6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fruitSpacing: {x: 0.42, y: 0, z: 0.42}
+  noOfFruits: {x: 2, y: 1, z: 2}
 --- !u!1001 &4456574229754758928
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54,7 +70,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: c0d765f2068695b4481f32e455fca066,
         type: 3}
       propertyPath: m_Name
-      value: orange
+      value: orange (1)
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: c0d765f2068695b4481f32e455fca066,
         type: 3}
@@ -66,10 +82,15 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Fruits
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: c0d765f2068695b4481f32e455fca066,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 91b9c78caed0cc247abd20903db37a86, type: 2}
     - target: {fileID: -4216859302048453862, guid: c0d765f2068695b4481f32e455fca066,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.8338103
+      value: 0.42
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c0d765f2068695b4481f32e455fca066,
         type: 3}
@@ -84,17 +105,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: c0d765f2068695b4481f32e455fca066,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c0d765f2068695b4481f32e455fca066,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c0d765f2068695b4481f32e455fca066,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c0d765f2068695b4481f32e455fca066,
         type: 3}
@@ -121,11 +142,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -1504981713932161579, guid: c0d765f2068695b4481f32e455fca066,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 91b9c78caed0cc247abd20903db37a86, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0d765f2068695b4481f32e455fca066, type: 3}
 --- !u!1 &5690583658771914265 stripped

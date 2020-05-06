@@ -44,6 +44,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fruitColor: {r: 0.8664564, g: 0.8867924, b: 0.4308473, a: 0}
   fruitLiquidcolor: {r: 0.9056604, g: 0.89042944, b: 0.61089355, a: 0}
+  fruitUnlocked: 0
+  fruitIndex: 0
+--- !u!114 &5358628133084868067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4835021546926061508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33bbd67330746b749baa35dca7b49c6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fruitSpacing: {x: 0.5, y: 0, z: 0.5}
+  noOfFruits: {x: 3, y: 1, z: 2}
 --- !u!1001 &3474702401807347405
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54,7 +70,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: b9156657ca9014045b42657fe0462397,
         type: 3}
       propertyPath: m_Name
-      value: pineapple
+      value: pineapple (5)
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: b9156657ca9014045b42657fe0462397,
         type: 3}
@@ -66,35 +82,40 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Fruits
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: b9156657ca9014045b42657fe0462397,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 989943c3039d43c4c9a93ef855412234, type: 2}
     - target: {fileID: -4216859302048453862, guid: b9156657ca9014045b42657fe0462397,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.0877974
+      value: 0.011
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b9156657ca9014045b42657fe0462397,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.16235307
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b9156657ca9014045b42657fe0462397,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.00017463428
+      value: 0.483
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b9156657ca9014045b42657fe0462397,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b9156657ca9014045b42657fe0462397,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b9156657ca9014045b42657fe0462397,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b9156657ca9014045b42657fe0462397,
         type: 3}
@@ -121,11 +142,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -1504981713932161579, guid: b9156657ca9014045b42657fe0462397,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 989943c3039d43c4c9a93ef855412234, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9156657ca9014045b42657fe0462397, type: 3}
 --- !u!1 &4835021546926061508 stripped

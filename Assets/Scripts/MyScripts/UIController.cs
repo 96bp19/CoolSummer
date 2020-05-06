@@ -29,7 +29,7 @@ public class UIController : MonoBehaviour
         for (int i = 0; i < fruitcutorder.Count; i++)
         {
            
-            fruitTomake += "  " + GameSequencer.Instance.fruitinfoHolder.allfruits[fruitcutorder[i]].name;
+            fruitTomake += "  " + GameSequencer.Instance.fruitinfoHolder.fruitslots[fruitcutorder[i]].fruitSlotInfo.fruitPrefab.name;
         }
         fruitMixOrder.text = fruitTomake;
     }
