@@ -36,6 +36,7 @@ public class FruitSlotManager : MonoBehaviour
                     spawnedObjTrans =fruit.transform;
                     spawnedObjTrans.SetParent(fruitslots[index].fruitSlotParent);
                     spawnedObjTrans.localPosition = new Vector3(spacing.x * x, spacing.y * y, spacing.z * z);
+                    spawnedFruits.Add(spawnedObjTrans);
                 }
             }
         }
@@ -53,15 +54,23 @@ public class FruitSlotManager : MonoBehaviour
         {
             spawnedFruits = new List<Transform>();
             usedIndex = new List<int>();
+                Debug.Log("spawned fruit inotialized");
         }
 
+       
         foreach (var item in spawnedFruits)
         {
             if (item != null)
             {
                 Destroy(item.gameObject);
+                Debug.Log("should be destroying");
             }
         }
+
+        spawnedFruits.Clear();
+        usedIndex.Clear();
+
+
     }
 
     [System.Serializable]
