@@ -32,6 +32,7 @@ public class FruitSlotManager : MonoBehaviour
                 {
                     Fruit fruit = Instantiate(spawnPrefab);
                     fruit.fruitIndex = index;
+                    fruit.fruitStrength = 1f / fruitslots[index].fruitSlotInfo.noOfFruitToDrag;
                     spawnedObjTrans =fruit.transform;
                     spawnedObjTrans.SetParent(fruitslots[index].fruitSlotParent);
                     spawnedObjTrans.localPosition = new Vector3(spacing.x * x, spacing.y * y, spacing.z * z);

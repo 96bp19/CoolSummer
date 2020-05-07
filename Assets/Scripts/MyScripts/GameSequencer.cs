@@ -86,7 +86,7 @@ public class GameSequencer: MonoBehaviour
            
         }
      
-        noOFFruitsToDrag = noOfFruitsToDrag[currentFruitBlendedCount];
+     //   noOFFruitsToDrag = noOfFruitsToDrag[currentFruitBlendedCount];
         
         GameInitializeListeners?.Invoke(noOFFruitsToDrag);
         // start of the game 

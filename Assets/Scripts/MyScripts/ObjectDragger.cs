@@ -123,8 +123,13 @@ public class ObjectDragger : MonoBehaviour
             if (item.CompareTag("ChoppingBoard"))
             {
                 Debug.Log("chopping board found");
-                StartCoroutine(SetItemToSliceable(currentSelectedObj.gameObject));
-                return;
+                FruitsChecker fruitsChecker = item.GetComponent<FruitsChecker>();
+                if (fruitsChecker && fruitsChecker.fruitStrength <1)
+                {
+                    StartCoroutine(SetItemToSliceable(currentSelectedObj.gameObject));
+                    return;
+
+                }
             }
         }
         Debug.Log("no choping board found");
@@ -134,7 +139,7 @@ public class ObjectDragger : MonoBehaviour
    IEnumerator SetItemToSliceable( GameObject obj)
     {
         obj.GetComponent<Rigidbody>().isKinematic = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.3f);
         fruitDragListener?.Invoke(obj.GetComponent<Fruit>());
         
     }

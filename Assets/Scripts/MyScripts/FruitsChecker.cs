@@ -25,34 +25,38 @@ public class FruitsChecker : MonoBehaviour
         allowedFruitMovingOutsideOfBoard = true;
     }
 
-   
-  
 
-    void OnGameInitialized( int NoOfFruitsToDrag)
+
+
+    void OnGameInitialized(int NoOfFruitsToDrag)
     {
         addedColors = new List<Color>();
         allowedFruitMovingOutsideOfBoard = false;
-        currentFruitsCount = NoOfFruitsToDrag;
+        fruitStrength = 0;
+        // currentFruitsCount = NoOfFruitsToDrag;
         Debug.Log("current fruit count initialized:" + currentFruitsCount);
     }
-    
 
-    
+
+    // lower means more fruits needs to be dragged and vice versa
+    [HideInInspector] public float fruitStrength =0;
     public void OnFruitInsideChoppingBoard( Fruit fruit)
     {
-        if (currentFruitsCount == 0) return;
-        if (fruit.gameObject.CompareTag("Fruits"))
+       
+       
+        if (fruitStrength >=1f) return;
+        if (fruit.gameObject.CompareTag("Dragable"))
         {
             fruit.gameObject.tag = "Sliceable";
             fruit.transform.SetParent(transform);
-            currentFruitsCount--;
+            fruitStrength += fruit.fruitStrength;
             Debug.Log("current fruit count :" + currentFruitsCount);
             Color fruitcolor = fruit.fruitColor;
             if (!addedColors.Contains(fruitcolor))
             {
                 addedColors.Add(fruitcolor);
             }
-            if (currentFruitsCount == 0)
+            if (fruitStrength >=1f)
             {
                 GameSequencer.Instance.playerCutFruits.Add(fruit.fruitIndex);
                 GameSequencer.Instance.mixedColor = ColorConverter.getMixedColor(addedColors.ToArray());
