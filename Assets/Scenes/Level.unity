@@ -722,6 +722,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choppingboard: {fileID: 1205441272}
   knifeRoot: {fileID: 286821385}
+  randomRotator: {fileID: 1482236025}
 --- !u!1001 &432055639
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1802,6 +1803,56 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fdeb6d05a68cf84fbcb3341ea4f1775, type: 3}
+--- !u!1 &1482236024
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1482236025}
+  - component: {fileID: 1482236026}
+  m_Layer: 0
+  m_Name: KnifeRandomRotator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1482236025
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482236024}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0923972, y: -0.20675325, z: -2.443485}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1482236026
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482236024}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 303d7fe2116e844449036a65528dbf60, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1526106908
 GameObject:
   m_ObjectHideFlags: 0
@@ -2958,6 +3009,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: KnifeRoot
       objectReference: {fileID: 0}
+    - target: {fileID: 7002333390392807622, guid: b5a90f5759fab554386d30b7b1972cb8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7002333390392807623, guid: b5a90f5759fab554386d30b7b1972cb8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3078,6 +3134,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7002333389947036364, guid: b5a90f5759fab554386d30b7b1972cb8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7002333390173042548, guid: b5a90f5759fab554386d30b7b1972cb8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3107,6 +3168,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.0043
+      objectReference: {fileID: 0}
+    - target: {fileID: 5506237790909585088, guid: b5a90f5759fab554386d30b7b1972cb8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5a90f5759fab554386d30b7b1972cb8, type: 3}
