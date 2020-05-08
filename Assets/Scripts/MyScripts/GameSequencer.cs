@@ -72,7 +72,12 @@ public class GameSequencer: MonoBehaviour
         
     }
 
-    void OnGameInitialized()
+    public void RunMessageFomTimeline()
+    {
+        Debug.Log("message from timeline camera move");
+    }
+
+    public void OnGameInitialized()
     {
         if (gameJustStarted )
         {
