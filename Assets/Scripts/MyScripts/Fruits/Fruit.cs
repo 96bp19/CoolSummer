@@ -8,6 +8,10 @@ public abstract class Fruit : MonoBehaviour
     public Color fruitLiquidcolor;
     public bool fruitUnlocked;
     [HideInInspector]
+    public float fruitStrength;
+
+   
+    [HideInInspector]
     public int fruitIndex;
     private void Awake()
     {

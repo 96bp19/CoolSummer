@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -3960445003250443131}
   m_Layer: 9
   m_Name: banana
-  m_TagString: Fruits
+  m_TagString: Dragable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,3 +125,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fruitColor: {r: 1, g: 0.7858338, b: 0, a: 1}
   fruitLiquidcolor: {r: 0.96629405, g: 0.9716981, b: 0.5454343, a: 0}
+  fruitUnlocked: 0
+  fruitIndex: 0

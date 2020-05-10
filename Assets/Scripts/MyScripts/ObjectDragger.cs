@@ -18,6 +18,11 @@ public class ObjectDragger : MonoBehaviour
     public GameObject Knife;
     public Vector2 knifeClampMin, knifeClampMax;
 
+    string DragedLayer = "DraggedObject" , fruitLayer;
+
+    public delegate void OnFruitDraggedToChoppingBoard(Fruit fruit);
+    public static OnFruitDraggedToChoppingBoard fruitDragListener;
+
     private void Start()
     {
         mainCam = Camera.main;
@@ -32,14 +37,15 @@ public class ObjectDragger : MonoBehaviour
         {
             if (Physics.Raycast(ray, out RaycastHit hitInfo, 100f, DragableLayer))
             {
-                if (!hitInfo.transform.gameObject.CompareTag("Sliceable"))
+                if (hitInfo.transform.gameObject.CompareTag("Dragable"))
                 {
                     currentSelectedObj = hitInfo.transform;
                     selectedObjRotation = currentSelectedObj.rotation;
                     selectedObjStartPos = currentSelectedObj.position;
                     draggingObj = true;
-                   
-
+                    fruitLayer = LayerMask.LayerToName(currentSelectedObj.gameObject.layer);
+                    ChangeDragableObjectProperty();
+                 
                 }
             }
 
@@ -55,10 +61,10 @@ public class ObjectDragger : MonoBehaviour
 
         if (draggingObj)
         {
-            DragObject(currentSelectedObj.gameObject);
+            DragObject(currentSelectedObj.gameObject,false);
         }
 
-        DragObject(Knife);
+        DragObject(Knife,true);
         LimitKnifeMovement();
        
 
@@ -75,14 +81,38 @@ public class ObjectDragger : MonoBehaviour
     }
 
 
-    void DragObject( GameObject objectToDrag)
+    void DragObject( GameObject objectToDrag, bool isknife)
     {
         Vector3 screenPoint = Input.mousePosition;
         screenPoint.z = mainCam.WorldToScreenPoint(objectToDrag.transform.position).z;
         Vector3 movePos  = mainCam.ScreenToWorldPoint(screenPoint);
+        if (isknife == false)
+        {
+            movePos.y = selectedObjStartPos.y + 1f;
+
+        }
+        else
         movePos.y = objectToDrag.transform.position.y;
         objectToDrag.transform.position = movePos;
 
+    }
+
+  
+
+    void ChangeDragableObjectProperty()
+    {
+        currentSelectedObj.GetComponent<Rigidbody>().isKinematic = true;
+        currentSelectedObj.gameObject.layer = LayerMask.NameToLayer(DragedLayer);
+    }
+
+    void ReturnToOriginalPos()
+    {
+        currentSelectedObj.GetComponent<Rigidbody>().isKinematic = false;
+        currentSelectedObj.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        currentSelectedObj.gameObject.layer = LayerMask.NameToLayer(fruitLayer);
+        currentSelectedObj.gameObject.tag = "Dragable";
+        currentSelectedObj.transform.position = selectedObjStartPos;
+        currentSelectedObj.transform.rotation = selectedObjRotation;
     }
 
     void OnObjectDropped()
@@ -93,20 +123,24 @@ public class ObjectDragger : MonoBehaviour
             if (item.CompareTag("ChoppingBoard"))
             {
                 Debug.Log("chopping board found");
-                StartCoroutine(SetItemToSliceable(currentSelectedObj.gameObject));
-                break;
+                FruitsChecker fruitsChecker = item.GetComponent<FruitsChecker>();
+                if (fruitsChecker && fruitsChecker.fruitStrength <1)
+                {
+                    StartCoroutine(SetItemToSliceable(currentSelectedObj.gameObject));
+                    return;
+
+                }
             }
         }
+        Debug.Log("no choping board found");
+        ReturnToOriginalPos();
     }
 
    IEnumerator SetItemToSliceable( GameObject obj)
     {
-        int frametoskip = 3;
-        while(frametoskip>0)
-        {
-            frametoskip--;
-            yield return null;
-        }
-        obj.tag = "Sliceable";
+        obj.GetComponent<Rigidbody>().isKinematic = false;
+        yield return new WaitForSeconds(0.3f);
+        fruitDragListener?.Invoke(obj.GetComponent<Fruit>());
+        
     }
 }

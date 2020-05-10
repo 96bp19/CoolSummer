@@ -22,6 +22,7 @@ public class ScreenLineRenderer : MonoBehaviour {
         cam = Camera.main;
         dragging = false;
         GameSequencer.GameInitializeListeners += OnGameInitialized;
+        KnifeAnimationPlayer.CutListener += CutOnClick;
     }
 
     void OnGameInitialized(int val)
@@ -46,7 +47,7 @@ public class ScreenLineRenderer : MonoBehaviour {
 
 
         // new style
-         CutOnClick();
+        // CutOnClick();
         //CutOnClick_02();
 
     }
@@ -90,13 +91,10 @@ public class ScreenLineRenderer : MonoBehaviour {
     void CutOnClick()
     {
         if (allowCutting == false) return;
-        if (Input.GetMouseButtonDown(0))
-        {
+       
 
             start = cam.WorldToViewportPoint(bladeStartpoint.transform.position);
             end = cam.WorldToViewportPoint(bladeEndPoint.transform.position);
-
-           
 
             Debug.DrawLine(start, end, Color.black);
           
@@ -123,7 +121,7 @@ public class ScreenLineRenderer : MonoBehaviour {
                 Debug.Log("limit reached");
                 GameSequencer.Instance.OnItemCutFinish();
             }
-        }
+        
     }
     public GameObject bladeStartpoint, bladeEndPoint;
     bool allowCutting = true;
