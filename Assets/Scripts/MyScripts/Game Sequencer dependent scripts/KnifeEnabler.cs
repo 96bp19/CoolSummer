@@ -16,7 +16,12 @@ public class KnifeEnabler : MonoBehaviour
         GameSequencer.ItemDragCompleteListener += OnItemDragComplete;
         
     }
- 
+
+    private void Start()
+    {
+        
+    }
+
 
     void OnGameInitialized(int val)
     {

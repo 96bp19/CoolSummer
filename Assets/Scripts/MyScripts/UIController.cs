@@ -20,10 +20,15 @@ public class UIController : MonoBehaviour
         GameSequencer.ItemPourCompleteListener += OnItemPoured;
     }
 
-    void OnGameStarted(int val)
+    public void OnOrderTaken()
     {
         DisableAllUIObj();
         itemDragText.SetActive(true);
+    }
+
+    void OnGameStarted(int val)
+    {
+       
         string fruitTomake = "";
         var fruitcutorder = GameSequencer.Instance.blenderfruit;
         for (int i = 0; i < fruitcutorder.Count; i++)
@@ -43,7 +48,7 @@ public class UIController : MonoBehaviour
     void OnItemCut()
     {
         DisableAllUIObj();
-        MoveToMixerButtton.SetActive(true);
+       // MoveToMixerButtton.SetActive(true);
         
     }
 

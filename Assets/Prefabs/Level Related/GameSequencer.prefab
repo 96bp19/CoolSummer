@@ -304,6 +304,7 @@ MonoBehaviour:
   MoveToMixerButtton: {fileID: 0}
   MixButton: {fileID: 0}
   PourButton: {fileID: 0}
+  fruitMixOrder: {fileID: 0}
 --- !u!1 &6115412851698605322
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,7 +315,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6115412851698605320}
   - component: {fileID: 6115412851698605323}
-  - component: {fileID: 6115412851698605321}
+  - component: {fileID: 446660687}
   m_Layer: 0
   m_Name: GameSequencer
   m_TagString: Untagged
@@ -352,8 +353,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noOFFruitsToDrag: 3
+  myTimeline: {fileID: 0}
+  fruitinfoHolder: {fileID: 0}
   mixedColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!114 &6115412851698605321
+  blenderfruit: 
+  playerCutFruits: 
+  FruitBasket: {fileID: 0}
+--- !u!114 &446660687
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -362,11 +368,44 @@ MonoBehaviour:
   m_GameObject: {fileID: 6115412851698605322}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8f9217ea30c9bb4b8bea884ff4aedc1, type: 3}
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSlice: {fileID: 1659111438}
-  Knife: {fileID: 0}
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 9b0710063102222408967ab67933efef, type: 2}
+    - {fileID: 11400000, guid: 3127513adb3da1b418b003831b3ed202, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6115412851698605323}
+          m_MethodName: OnItemDragFinish
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6115412851698605323}
+          m_MethodName: PauseTimeline
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
 --- !u!1 &6115412851743253675
 GameObject:
   m_ObjectHideFlags: 0

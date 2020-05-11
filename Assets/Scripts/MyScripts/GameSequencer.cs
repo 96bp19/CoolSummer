@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class GameSequencer: MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class GameSequencer: MonoBehaviour
     public int noOFFruitsToDrag =2;
     public delegate void OnGameStarted(int noOfFruitsToDrag);
     public static OnGameStarted GameInitializeListeners;
+
+    [SerializeField] PlayableDirector myTimeline;
 
 
     // holds info about various fruits used in game
@@ -21,8 +24,6 @@ public class GameSequencer: MonoBehaviour
 
     bool gameJustStarted = true;
 
-
-    
     [HideInInspector] public Color mixedColor;
 
 
@@ -36,6 +37,19 @@ public class GameSequencer: MonoBehaviour
 
     public GameObject FruitBasket;
 
+
+    public void PauseTimeline()
+    {
+        Debug.Log("time line paused");
+        myTimeline.Pause();
+    }
+
+    public void ResumeTimeline()
+    {
+        Debug.Log("time line resumed");
+        myTimeline.Resume();
+    }
+
     private void Awake()
     {
         Instance = this;
@@ -45,6 +59,11 @@ public class GameSequencer: MonoBehaviour
     {
         OnGameInitialized();
      
+    }
+
+    public void TakeOrder()
+    {
+
     }
 
     void ListFruitsToBlend(int val)
@@ -72,6 +91,11 @@ public class GameSequencer: MonoBehaviour
         
     }
 
+    public void GenerateFruitsTobeChopped()
+    {
+
+    }
+
     public void RunMessageFomTimeline()
     {
         Debug.Log("message from timeline camera move");
@@ -81,6 +105,8 @@ public class GameSequencer: MonoBehaviour
     {
         if (gameJustStarted )
         {
+         myTimeline.initialTime = 0;
+         myTimeline.time = 0;
             currentFruitBlendedCount = 0;
             fruitmixlayer = Random.Range(1, 4);
             
@@ -90,6 +116,12 @@ public class GameSequencer: MonoBehaviour
 
            
         }
+        else
+        {
+            myTimeline.time = 0.5f;
+        }
+        ResumeTimeline();
+
      
      //   noOFFruitsToDrag = noOfFruitsToDrag[currentFruitBlendedCount];
         
@@ -104,6 +136,7 @@ public class GameSequencer: MonoBehaviour
      public void OnItemDragFinish()
     {
         ItemDragCompleteListener?.Invoke();
+        ResumeTimeline();
     }
 
 
@@ -112,6 +145,7 @@ public class GameSequencer: MonoBehaviour
     public void OnItemCutFinish()
     {
         ItemCutCompleteListener?.Invoke();
+        ResumeTimeline();
     }
 
     public delegate void OnItemMoveStart();
@@ -141,6 +175,7 @@ public class GameSequencer: MonoBehaviour
     public void OnItemMixFinish()
     {
         ItemMixCompleteListener?.Invoke();
+        ResumeTimeline();
     }
 
 
