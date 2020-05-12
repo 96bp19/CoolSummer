@@ -103,22 +103,22 @@ public class GameSequencer: MonoBehaviour
 
     public void OnGameInitialized()
     {
-        if (gameJustStarted )
+        if (gameJustStarted)
         {
-         myTimeline.initialTime = 0;
-         myTimeline.time = 0;
+        //  myTimeline.initialTime = 0;
+          myTimeline.time = 0;
             currentFruitBlendedCount = 0;
             fruitmixlayer = Random.Range(1, 4);
             
             gameJustStarted = false;
             DestroyPreviousFruits();
             ListFruitsToBlend(fruitmixlayer);
-
-           
+            myTimeline.Stop();
+            myTimeline.Evaluate();
         }
         else
         {
-            myTimeline.time = 0.5f;
+            myTimeline.time = 0.45f;
         }
         ResumeTimeline();
 
@@ -129,6 +129,8 @@ public class GameSequencer: MonoBehaviour
         // start of the game 
         // show items to cut
     }
+
+    
 
     public delegate void OnItemDragComplete();
     public static OnItemDragComplete ItemDragCompleteListener;
@@ -146,6 +148,7 @@ public class GameSequencer: MonoBehaviour
     {
         ItemCutCompleteListener?.Invoke();
         ResumeTimeline();
+        OnItemMoveStartToBlender();
     }
 
     public delegate void OnItemMoveStart();
@@ -192,6 +195,7 @@ public class GameSequencer: MonoBehaviour
     {
         ItemPourCompleteListener?.Invoke();
         OnFreezeStart();
+        ResumeTimeline();
     }
 
     public delegate void OnItemfreezeStart();

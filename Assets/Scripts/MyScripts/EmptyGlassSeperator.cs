@@ -7,9 +7,9 @@ public class EmptyGlassSeperator : MonoBehaviour
     public ClipPlane emptyflaskliquidFiller;
     private void Awake()
     {
-        emptyflaskliquidFiller.enabled = false;
-        GameSequencer.ItemPourStartListener += OnItemPourStart;
-        GameSequencer.GameInitializeListeners += OnGameInitialized;
+        //emptyflaskliquidFiller.enabled = false;
+     //   GameSequencer.ItemPourStartListener += OnItemPourStart;
+    //    GameSequencer.GameInitializeListeners += OnGameInitialized;
         
     }
 

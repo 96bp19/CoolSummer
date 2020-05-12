@@ -18,6 +18,16 @@ public class KnifeAnimationPlayer : MonoBehaviour
     bool currentlyCutting = false;
     float currentTime = 0;
 
+  
+
+    private void OnDisable()
+    {
+        
+        CancelInvoke("OnCut");
+        currentTime = 0;
+        currentlyCutting = false;
+    }
+
     // Update is called once per frame
     void Update()
     {

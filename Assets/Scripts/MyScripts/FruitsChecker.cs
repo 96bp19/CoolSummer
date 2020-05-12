@@ -11,6 +11,7 @@ public class FruitsChecker : MonoBehaviour
     bool allowedFruitMovingOutsideOfBoard = false;
 
     List<Color> addedColors;
+    public PhysicMaterial mat;
 
     private void Awake()
     {
@@ -23,6 +24,22 @@ public class FruitsChecker : MonoBehaviour
     void OnObjectMoveAllowed()
     {
         allowedFruitMovingOutsideOfBoard = true;
+    }
+
+    bool resetPhysicsMat = false;
+    public void ChangePhysicsMat()
+    {
+        resetPhysicsMat = !resetPhysicsMat;
+        if (resetPhysicsMat)
+        {
+            GetComponent<Collider>().material = mat;
+            Debug.Log("mat changed");
+        }
+        else
+        {
+            GetComponent<Collider>().material = null;
+            Debug.Log("mat reset");
+        }
     }
 
 
@@ -66,12 +83,29 @@ public class FruitsChecker : MonoBehaviour
         }
     }
 
- 
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Sliceable"))
+        {
+            other.transform.SetParent(null);
+            other.gameObject.layer = LayerMask.NameToLayer("ChoppedFruits");
+        }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Sliceable"))
+        {
+            other.transform.SetParent(transform);
+        }
+    }
 
 
 
-  
 
-   
+
+
+
+
 
 }

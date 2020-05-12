@@ -55,7 +55,7 @@ public class LiquidPour : MonoBehaviour
     void Pour()
     {
      //   EmptyFlask.mixColors = FilledFlask.mixColors;
-        EmptyFlask.SetMixedColor(GameSequencer.Instance.mixedColor);
+     //   EmptyFlask.SetMixedColor(GameSequencer.Instance.mixedColor);
         StartCoroutine(PourLiquid(FilledFlask, EmptyFlask));
     }
 
@@ -73,7 +73,7 @@ public class LiquidPour : MonoBehaviour
             yield return null;
         }
         filledflask.StartMixingFruits(false);
-        emptyflask.StartMixingFruits(true);
+      //  emptyflask.StartMixingFruits(true);
      
         StopCoroutine(endposRoutine);
         endposRoutine = SetEndPosForLine(liquidDropSpeed/2, pourStartTransform.position + Vector3.down * 3, 0);

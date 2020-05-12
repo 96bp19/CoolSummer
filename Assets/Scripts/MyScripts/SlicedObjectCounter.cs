@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SlicedObjectCounter : MonoBehaviour
 {
-    public Animator anim;
+
 
     private void Awake()
     {
@@ -15,8 +15,8 @@ public class SlicedObjectCounter : MonoBehaviour
     Rigidbody[] slicedfruits;
     void MoveObjectToMixer()
     {
-        slicedfruits = transform.GetComponentsInChildren<Rigidbody>();
-        MoveToMixer(slicedfruits);
+      
+        MoveToMixer();
         Invoke("OnMoveComplete", 2.5f);
     }
 
@@ -45,29 +45,20 @@ public class SlicedObjectCounter : MonoBehaviour
     }
 
 
-    void OnMoveComplete()
+    void MoveToMixer()
     {
-        GameSequencer.Instance.OnItemMovedToBlender();
+        SetKinematicToAllCutFruits(false);
+
+
     }
 
-
-    void MoveToMixer(Rigidbody[] objects)
+    public void SetKinematicToAllCutFruits(bool val)
     {
-
-        //  anim.SetTrigger("MoveToMixer");
-
-    
-       
-
-        foreach (var item in objects)
-        { 
-            item.gameObject.layer = LayerMask.NameToLayer("ChoppedFruits");
-            item.transform.SetParent(null);
-           
-            item.transform.position = new Vector3(0, Random.Range(2f, 3f),0.5f);
+        slicedfruits = transform.GetComponentsInChildren<Rigidbody>();
+        foreach (var item in slicedfruits)
+        {
+            item.isKinematic = val;
         }
-
-
     }
 
   

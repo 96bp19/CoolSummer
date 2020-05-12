@@ -12,12 +12,12 @@ public class UIController : MonoBehaviour
 
     private void Awake()
     {
-        GameSequencer.GameInitializeListeners += OnGameStarted;
-        GameSequencer.ItemDragCompleteListener += OnItemDragged;
-        GameSequencer.ItemCutCompleteListener += OnItemCut;
-        GameSequencer.ItemMoveCompleteListener += OnItemMoved;
-        GameSequencer.ItemMixCompleteListener += OnItemMixed;
-        GameSequencer.ItemPourCompleteListener += OnItemPoured;
+//         GameSequencer.GameInitializeListeners += OnGameStarted;
+//         GameSequencer.ItemDragCompleteListener += OnItemDragged;
+//         GameSequencer.ItemCutCompleteListener += OnItemCut;
+//         GameSequencer.ItemMoveCompleteListener += OnItemMoved;
+//         GameSequencer.ItemMixCompleteListener += OnItemMixed;
+//         GameSequencer.ItemPourCompleteListener += OnItemPoured;
     }
 
     public void OnOrderTaken()
