@@ -27,21 +27,24 @@ public class SlicedObjectCounter : MonoBehaviour
       
     }
 
+    public void removeLeftoverFruits()
+    {
+        foreach (var fruit in slicedfruits)
+        {                  
+        }
+    }
 
     IEnumerator startmixing()
     {
         foreach (var fruit in slicedfruits)
         {
             yield return null;
+           Destroy(fruit.gameObject);            
 
-            if (fruit.gameObject)
-            {
-                Destroy(fruit.gameObject);
-
-            }
+           
         }
 
-        slicedfruits = new Rigidbody[0];
+      
 
     }
 

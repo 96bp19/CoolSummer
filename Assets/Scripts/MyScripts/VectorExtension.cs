@@ -16,4 +16,17 @@ public static class VectorExtension
 
         transform.position = pos;
     }
+
+    public static void SetVector(this Vector3  value, float x = float.NaN, float y = float.NaN, float z = float.NaN)
+    {
+        var pos = value;
+        if (!float.IsNaN(x))
+            pos.x = x;
+        if (!float.IsNaN(y))
+            pos.y = y;
+        if (!float.IsNaN(z))
+            pos.z = z;
+
+        value = pos;
+    }
 }
