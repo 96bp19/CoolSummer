@@ -89,14 +89,22 @@ public class FruitsChecker : MonoBehaviour
         {
             other.transform.SetParent(null);
             other.gameObject.layer = LayerMask.NameToLayer("ChoppedFruits");
+            
         }
     }
+
+    [HideInInspector]
+    public List<Rigidbody> allChildobj = new List<Rigidbody>();
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Sliceable"))
         {
             other.transform.SetParent(transform);
+            if (!allChildobj.Contains(other.GetComponent<Rigidbody>()))
+            {
+                allChildobj.Add(other.GetComponent<Rigidbody>());
+            }
         }
     }
 

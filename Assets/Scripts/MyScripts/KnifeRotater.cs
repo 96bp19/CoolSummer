@@ -20,11 +20,15 @@ public class KnifeRotater : MonoBehaviour
 
         // knifeRoot.transform.localRotation = randomRotator.rotation;
 
-       // knifeRoot.transform.localEulerAngles = Vector3.Lerp(knifeRoot.transform.localEulerAngles, newRot, rotationchangeSmoothness * Time.deltaTime);
+        // knifeRoot.transform.localEulerAngles = Vector3.Lerp(knifeRoot.transform.localEulerAngles, newRot, rotationchangeSmoothness * Time.deltaTime);
 
         float y = Mathf.LerpAngle(knifeRoot.transform.localEulerAngles.y, newRot.y, rotationchangeSmoothness * Time.deltaTime);
+        Vector3 kniferot = Vector3.zero;
+        kniferot.y = y;
 
-        knifeRoot.transform.localEulerAngles.SetVector(y: y);
+        //knifeRoot.transform.localEulerAngles.SetVector(y: y);
+        knifeRoot.transform.localEulerAngles = kniferot;
+
 
     }
 
@@ -51,6 +55,7 @@ public class KnifeRotater : MonoBehaviour
         localeuler.y = newval;
         localeuler.x = localeuler.z = 0f;
         newRot = localeuler;
-       ;
+        Debug.Log("new rot :" + newRot);
+       
     }
 }

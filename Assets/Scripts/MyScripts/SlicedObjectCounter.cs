@@ -1,15 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(FruitsChecker))]
 public class SlicedObjectCounter : MonoBehaviour
 {
 
+    FruitsChecker fruitchecker;
 
     private void Awake()
     {
         GameSequencer.ItemMoveStartListener += MoveObjectToMixer;
         GameSequencer.ItemMixStartListener += OnMixStarted;
+        fruitchecker = GetComponent<FruitsChecker>();
     }
 
     Rigidbody[] slicedfruits;
@@ -27,31 +29,39 @@ public class SlicedObjectCounter : MonoBehaviour
       
     }
 
-    public void removeLeftoverFruits()
-    {
-        foreach (var fruit in slicedfruits)
-        {                  
-        }
-    }
+    
 
     IEnumerator startmixing()
     {
         foreach (var fruit in slicedfruits)
         {
             yield return null;
-           Destroy(fruit.gameObject);            
-
-           
+            fruit.gameObject.SetActive(false);           
+          
         }
 
-      
+        yield return new WaitForSeconds(3f);
+        destroyAfterSomeTime();
 
+    }
+
+    void destroyAfterSomeTime()
+    {
+        foreach (var fruit in slicedfruits)
+        {
+
+            Destroy(fruit.gameObject);
+
+
+        }
+       
+        fruitchecker.allChildobj.Clear();
     }
 
 
     public int CountSlicedObjects()
     {
-        return transform.childCount;
+        return fruitchecker.allChildobj.Count;
     }
 
 
@@ -64,7 +74,7 @@ public class SlicedObjectCounter : MonoBehaviour
 
     public void SetKinematicToAllCutFruits(bool val)
     {
-        slicedfruits = transform.GetComponentsInChildren<Rigidbody>();
+        slicedfruits = fruitchecker.allChildobj.ToArray();
         foreach (var item in slicedfruits)
         {
             item.isKinematic = val;
