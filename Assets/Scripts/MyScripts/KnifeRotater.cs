@@ -23,8 +23,8 @@ public class KnifeRotater : MonoBehaviour
        // knifeRoot.transform.localEulerAngles = Vector3.Lerp(knifeRoot.transform.localEulerAngles, newRot, rotationchangeSmoothness * Time.deltaTime);
 
         float y = Mathf.LerpAngle(knifeRoot.transform.localEulerAngles.y, newRot.y, rotationchangeSmoothness * Time.deltaTime);
-      
-        knifeRoot.transform.localEulerAngles = newRot;
+
+        knifeRoot.transform.localEulerAngles.SetVector(y: y);
 
     }
 
