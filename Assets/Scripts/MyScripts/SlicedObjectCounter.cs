@@ -33,8 +33,15 @@ public class SlicedObjectCounter : MonoBehaviour
         foreach (var fruit in slicedfruits)
         {
             yield return null;
-            Destroy(fruit.gameObject);
+
+            if (fruit.gameObject)
+            {
+                Destroy(fruit.gameObject);
+
+            }
         }
+
+        slicedfruits = new Rigidbody[0];
 
     }
 
