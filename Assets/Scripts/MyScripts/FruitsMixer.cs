@@ -21,6 +21,9 @@ public class FruitsMixer : MonoBehaviour
 
     Color mixedColor;
 
+    LineRenderer lineRenderer;
+
+
     public void SetMixedColor(Color col)
     {
         mixedColor = col;
@@ -31,6 +34,8 @@ public class FruitsMixer : MonoBehaviour
     private void Awake()
     {
         GameSequencer.ItemMixStartListener += OnMixingStart;
+        lineRenderer = GetComponent<LineRenderer>();
+       
     }
 
     void OnMixingStart()
@@ -55,6 +60,8 @@ public class FruitsMixer : MonoBehaviour
     {
 
         mixedColor= GameSequencer.Instance.mixedColor;
+        lineRenderer.material = ObjectToFill.GetComponent<Renderer>().sharedMaterial;
+
         Material mat = ObjectToFill.GetComponent<Renderer>().material;
         mat.SetColor(mainColor, mixedColor);
         if (fillFlask)

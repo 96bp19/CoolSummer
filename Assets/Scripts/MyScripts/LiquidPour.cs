@@ -14,8 +14,7 @@ public class LiquidPour : MonoBehaviour
     [SerializeField] float liquidReturnSpeed = 1;
 
 
-    [SerializeField] FruitsMixer FilledFlask, EmptyFlask;
-
+    [SerializeField] FruitsMixer FilledFlask;
     bool liquidReachedtheButtom;
 
 
@@ -29,6 +28,7 @@ public class LiquidPour : MonoBehaviour
     private void Start()
     {
         resetLineRendererPos();
+        lineRenderer.enabled = false;
     }
 
     void OnPourStart()
@@ -56,13 +56,13 @@ public class LiquidPour : MonoBehaviour
     {
      //   EmptyFlask.mixColors = FilledFlask.mixColors;
      //   EmptyFlask.SetMixedColor(GameSequencer.Instance.mixedColor);
-        StartCoroutine(PourLiquid(FilledFlask, EmptyFlask));
+        StartCoroutine(PourLiquid(FilledFlask));
     }
 
-    IEnumerator PourLiquid( FruitsMixer filledflask, FruitsMixer emptyflask)
+    IEnumerator PourLiquid( FruitsMixer filledflask)
     {
 
-
+        lineRenderer.enabled = true;
         IEnumerator endposRoutine = null;
         liquidReachedtheButtom = false;
         endposRoutine = SetEndPosForLine(liquidDropSpeed, pourStartTransform.position + Vector3.down * 3,1);
@@ -79,6 +79,7 @@ public class LiquidPour : MonoBehaviour
         endposRoutine = SetEndPosForLine(liquidDropSpeed/2, pourStartTransform.position + Vector3.down * 3, 0);
         Debug.Log("second routine");
         StartCoroutine(endposRoutine);
+       
 
     }
 
@@ -102,6 +103,7 @@ public class LiquidPour : MonoBehaviour
         {
             // pour complete
             GameSequencer.Instance.OnItemPoured();
+            lineRenderer.enabled = false;
         }
     }
 
