@@ -88,7 +88,7 @@ public class ObjectDragger : MonoBehaviour
         Vector3 movePos  = mainCam.ScreenToWorldPoint(screenPoint);
         if (isknife == false)
         {
-            movePos.y = selectedObjStartPos.y + 1f;
+            movePos.y = selectedObjStartPos.y + 1.2f;
 
         }
         else
