@@ -13,6 +13,9 @@ public class FruitsChecker : MonoBehaviour
     List<Color> addedColors;
     public PhysicMaterial mat;
 
+    [HideInInspector]
+    public int draggedFruitType =-1;
+
     private void Awake()
     {
         GameSequencer.GameInitializeListeners += OnGameInitialized;
@@ -75,12 +78,23 @@ public class FruitsChecker : MonoBehaviour
             }
             if (fruitStrength >=1f)
             {
+                draggedFruitType = -1;
                 GameSequencer.Instance.playerCutFruits.Add(fruit.fruitIndex);
                 GameSequencer.Instance.mixedColor = ColorConverter.getMixedColor(addedColors.ToArray());
                 GameSequencer.Instance.OnItemDragFinish();
             }
 
         }
+    }
+
+    public bool isSameFruit( Fruit fruit)
+    {
+        if (draggedFruitType == -1)
+        {
+            draggedFruitType = fruit.fruitIndex;
+        }
+
+        return draggedFruitType == fruit.fruitIndex;
     }
 
     public void OnTriggerExit(Collider other)

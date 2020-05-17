@@ -124,7 +124,7 @@ public class ObjectDragger : MonoBehaviour
             {
                 Debug.Log("chopping board found");
                 FruitsChecker fruitsChecker = item.GetComponent<FruitsChecker>();
-                if (fruitsChecker && fruitsChecker.fruitStrength <1)
+                if (fruitsChecker && fruitsChecker.fruitStrength <1 && fruitsChecker.isSameFruit(currentSelectedObj.GetComponent<Fruit>()))
                 {
                     StartCoroutine(SetItemToSliceable(currentSelectedObj.gameObject));
                     return;
