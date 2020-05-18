@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MixerLiquid_mat
-  m_Shader: {fileID: -6465566751694194690, guid: 0584e9c28d7f925459092bc828184097,
+  m_Name: Colormixer_mat
+  m_Shader: {fileID: -6465566751694194690, guid: 50e109fe0e49aee4ca3db7c78f8a4acf,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -20,10 +20,7 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs: []
-    m_Floats:
-    - Vector1_C138F564: 4
+    m_Floats: []
     m_Colors:
-    - Color_2B48E03C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_A7238AEE: {r: 0.8490566, g: 0.09211465, b: 0.09211465, a: 0}
-    - _MainColor: {r: 7.153115, g: 1.4883829, b: 0.10122314, a: 1}
-    - _Plane: {r: 0, g: 0, b: 0, a: -0.22}
+    - Color_C9AA89BB: {r: 1, g: 0, b: 0, a: 0}
+    - Color_DE08A83C: {r: 0, g: 0.04867458, b: 1, a: 0}

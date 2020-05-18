@@ -37,6 +37,7 @@ public class GameSequencer: MonoBehaviour
 
     public GameObject FruitBasket;
 
+    public int currentLevel = 1;
 
     public void PauseTimeline()
     {
@@ -73,6 +74,8 @@ public class GameSequencer: MonoBehaviour
         noOfFruitsToDrag = new List<int>();
         int maxfruitlength = fruitinfoHolder.fruitslots.Length;
         int index = 0;
+
+        RandomSeeder.SetSeedBasedOnLevel(currentLevel);
   
         for (int i = 0; i < 3; i++)
         {
@@ -241,6 +244,7 @@ public class GameSequencer: MonoBehaviour
     public static OnlevelFinish levelCompleteListener;
     public void OnLevelComplete()
     {
+        currentLevel++;
         levelCompleteListener?.Invoke();
         
         Invoke("RestartGameLoop", 2f);
@@ -251,6 +255,7 @@ public class GameSequencer: MonoBehaviour
     void RestartGameLoop()
     {
         OnGameInitialized();
+        
     }
 
 
