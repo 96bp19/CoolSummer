@@ -88,7 +88,7 @@ public class ObjectDragger : MonoBehaviour
         Vector3 movePos  = mainCam.ScreenToWorldPoint(screenPoint);
         if (isknife == false)
         {
-            movePos.y = selectedObjStartPos.y + 1f;
+            movePos.y = selectedObjStartPos.y + 1.2f;
 
         }
         else
@@ -124,7 +124,7 @@ public class ObjectDragger : MonoBehaviour
             {
                 Debug.Log("chopping board found");
                 FruitsChecker fruitsChecker = item.GetComponent<FruitsChecker>();
-                if (fruitsChecker && fruitsChecker.fruitStrength <1)
+                if (fruitsChecker && fruitsChecker.fruitStrength <1 && fruitsChecker.isSameFruit(currentSelectedObj.GetComponent<Fruit>()))
                 {
                     StartCoroutine(SetItemToSliceable(currentSelectedObj.gameObject));
                     return;

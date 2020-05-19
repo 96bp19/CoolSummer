@@ -42,9 +42,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbbb245012801794da9fff8b40fd05cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fruitColor: {r: 1, g: 0.45249465, b: 0, a: 0}
-  fruitLiquidcolor: {r: 0.9245283, g: 0.71614796, b: 0.53640085, a: 0}
+  fruitColor: {r: 1, g: 0.593477, b: 0, a: 0}
+  fruitLiquidcolor: {r: 1, g: 0.5921569, b: 0, a: 1}
   fruitUnlocked: 0
+  fruitStrength: 0
   fruitIndex: 0
 --- !u!114 &1003372462478228067
 MonoBehaviour:

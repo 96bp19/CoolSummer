@@ -1,22 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(FruitsChecker))]
 public class SlicedObjectCounter : MonoBehaviour
 {
-    public Animator anim;
+
+    FruitsChecker fruitchecker;
 
     private void Awake()
     {
         GameSequencer.ItemMoveStartListener += MoveObjectToMixer;
         GameSequencer.ItemMixStartListener += OnMixStarted;
+        fruitchecker = GetComponent<FruitsChecker>();
     }
 
     Rigidbody[] slicedfruits;
     void MoveObjectToMixer()
     {
-        slicedfruits = transform.GetComponentsInChildren<Rigidbody>();
-        MoveToMixer(slicedfruits);
+      
+        MoveToMixer();
         Invoke("OnMoveComplete", 2.5f);
     }
 
@@ -27,47 +29,56 @@ public class SlicedObjectCounter : MonoBehaviour
       
     }
 
+    
 
     IEnumerator startmixing()
     {
         foreach (var fruit in slicedfruits)
         {
             yield return null;
-            Destroy(fruit.gameObject);
+            fruit.gameObject.SetActive(false);           
+          
         }
 
+        yield return new WaitForSeconds(3f);
+        destroyAfterSomeTime();
+
+    }
+
+    void destroyAfterSomeTime()
+    {
+        foreach (var fruit in slicedfruits)
+        {
+
+            Destroy(fruit.gameObject);
+
+
+        }
+       
+        fruitchecker.allChildobj.Clear();
     }
 
 
     public int CountSlicedObjects()
     {
-        return transform.childCount;
+        return fruitchecker.allChildobj.Count;
     }
 
 
-    void OnMoveComplete()
+    void MoveToMixer()
     {
-        GameSequencer.Instance.OnItemMovedToBlender();
+        SetKinematicToAllCutFruits(false);
+
+
     }
 
-
-    void MoveToMixer(Rigidbody[] objects)
+    public void SetKinematicToAllCutFruits(bool val)
     {
-
-        //  anim.SetTrigger("MoveToMixer");
-
-    
-       
-
-        foreach (var item in objects)
-        { 
-            item.gameObject.layer = LayerMask.NameToLayer("ChoppedFruits");
-            item.transform.SetParent(null);
-           
-            item.transform.position = new Vector3(0, Random.Range(2f, 3f),0.5f);
+        slicedfruits = fruitchecker.allChildobj.ToArray();
+        foreach (var item in slicedfruits)
+        {
+            item.isKinematic = val;
         }
-
-
     }
 
   

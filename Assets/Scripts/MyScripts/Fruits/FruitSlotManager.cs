@@ -35,6 +35,7 @@ public class FruitSlotManager : MonoBehaviour
                     fruit.fruitStrength = 1f / fruitslots[index].fruitSlotInfo.noOfFruitToDrag;
                     spawnedObjTrans =fruit.transform;
                     spawnedObjTrans.SetParent(fruitslots[index].fruitSlotParent);
+                    spawnedObjTrans.GetComponent<Rigidbody>().isKinematic = true;
                     spawnedObjTrans.localPosition = new Vector3(spacing.x * x, spacing.y * y, spacing.z * z);
                     spawnedFruits.Add(spawnedObjTrans);
                 }

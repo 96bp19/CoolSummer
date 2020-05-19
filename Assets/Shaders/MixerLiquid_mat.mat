@@ -20,9 +20,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs: []
-    m_Floats: []
+    m_Floats:
+    - Vector1_C138F564: 4
     m_Colors:
     - Color_2B48E03C: {r: 1, g: 1, b: 1, a: 0}
     - Color_A7238AEE: {r: 0.8490566, g: 0.09211465, b: 0.09211465, a: 0}
-    - _MainColor: {r: 1, g: 0.09099996, b: 0.09099996, a: 1}
+    - _MainColor: {r: 7.153115, g: 1.4883829, b: 0.10122314, a: 1}
     - _Plane: {r: 0, g: 0, b: 0, a: -0.22}

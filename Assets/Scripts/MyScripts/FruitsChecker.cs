@@ -11,6 +11,10 @@ public class FruitsChecker : MonoBehaviour
     bool allowedFruitMovingOutsideOfBoard = false;
 
     List<Color> addedColors;
+    public PhysicMaterial mat;
+
+    [HideInInspector]
+    public int draggedFruitType =-1;
 
     private void Awake()
     {
@@ -23,6 +27,22 @@ public class FruitsChecker : MonoBehaviour
     void OnObjectMoveAllowed()
     {
         allowedFruitMovingOutsideOfBoard = true;
+    }
+
+    bool resetPhysicsMat = false;
+    public void ChangePhysicsMat()
+    {
+        resetPhysicsMat = !resetPhysicsMat;
+        if (resetPhysicsMat)
+        {
+            GetComponent<Collider>().material = mat;
+            Debug.Log("mat changed");
+        }
+        else
+        {
+            GetComponent<Collider>().material = null;
+            Debug.Log("mat reset");
+        }
     }
 
 
@@ -58,6 +78,7 @@ public class FruitsChecker : MonoBehaviour
             }
             if (fruitStrength >=1f)
             {
+                draggedFruitType = -1;
                 GameSequencer.Instance.playerCutFruits.Add(fruit.fruitIndex);
                 GameSequencer.Instance.mixedColor = ColorConverter.getMixedColor(addedColors.ToArray());
                 GameSequencer.Instance.OnItemDragFinish();
@@ -66,12 +87,47 @@ public class FruitsChecker : MonoBehaviour
         }
     }
 
- 
+    public bool isSameFruit( Fruit fruit)
+    {
+        if (draggedFruitType == -1)
+        {
+            draggedFruitType = fruit.fruitIndex;
+        }
+
+        return draggedFruitType == fruit.fruitIndex;
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Sliceable"))
+        {
+            other.transform.SetParent(null);
+            other.gameObject.layer = LayerMask.NameToLayer("ChoppedFruits");
+            
+        }
+    }
+
+    [HideInInspector]
+    public List<Rigidbody> allChildobj = new List<Rigidbody>();
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Sliceable"))
+        {
+            other.transform.SetParent(transform);
+            if (!allChildobj.Contains(other.GetComponent<Rigidbody>()))
+            {
+                allChildobj.Add(other.GetComponent<Rigidbody>());
+            }
+        }
+    }
 
 
 
-  
 
-   
+
+
+
+
 
 }
